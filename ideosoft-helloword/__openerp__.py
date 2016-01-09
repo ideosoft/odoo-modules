@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "HELLO",
+    'name': "Hello World",
     'summary': """
-        Module HELLO""",
+        Module Hello World""",
 
     'description': """
         Long description of module's purpose
