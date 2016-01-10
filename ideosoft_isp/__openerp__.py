@@ -16,7 +16,7 @@ Ideosoft Módulo ISP
     'data': [
         'views/menu.xml',
     ],
-    'depends': ['contract_isp'],
+    'depends': ['ideosoft_isp_contract'],
     'installable': True,
     'application': False,
     'auto_install': False,
