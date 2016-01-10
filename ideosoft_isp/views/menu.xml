@@ -6,7 +6,8 @@
 			<field name="res_model">account.analytic.account</field>
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-            <field name="domain">[('type','=','contract'),('use_contract_services','=',True)]</field>
+            <field name="domain">[('type', '=', 'contract'), ('use_contract_services', '=', True)]</field>
+            <field name="context">{'type': 'contract', 'use_contract_services': True}</field>
 			<!-- <field name="view_ids" eval="[(6, 0, [ref('view_isp_contract_service_form')])]" /> -->
 		</record>
 
