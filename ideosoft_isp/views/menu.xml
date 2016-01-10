@@ -84,13 +84,13 @@
 				<field name="price" readonly="1" sum="Total Price"/>
 				<field name="value" />
 				<button
-					name="%(contract_isp.action_view_contract_service_activate)d"
+					name="%(ideosoft_isp_contract.action_view_contract_service_activate)d"
 					string="Activate"
 					type="action"
 					states="draft"
 					groups="contract_isp.group_isp_agent" />
 				<button
-					name="%(contract_isp.action_view_contract_service_deactivate)d"
+					name="%(ideosoft_isp_contract.action_view_contract_service_deactivate)d"
 					string="Desactivate"
 					states="active"
 					type="action"
