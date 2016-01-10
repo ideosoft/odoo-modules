@@ -37,6 +37,7 @@
             <!-- <field name="flow_stop">True</field> -->
         </record>
 
+<!--
         <record id="t0" model="workflow.transition">
             <field name="act_from" ref="act_draft"/>
             <field name="act_to" ref="act_active"/>
@@ -55,6 +56,6 @@
             <field name="signal">reactivate</field>
             <field name="group_id" ref="contract_isp.group_isp_agent"/>
         </record>
-
+-->
     </data>
 </openerp>
