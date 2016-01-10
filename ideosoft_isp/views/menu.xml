@@ -12,7 +12,8 @@
 
 
 		<menuitem id="menu_isp_contract" name="Contracts" parent="menu_isp_main" action="ideososft_isp.contract.action_contract_service_list" sequence="10" />
-		
+
+
 		<menuitem id="menu_isp_product" name="Productos" parent="menu_isp_main" action="action_isp_product_product_list" sequence="20" />
 		
 		<menuitem id="menu_isp_servicios" name="Servicios" parent="menu_isp_main" action="action_isp_contract_service_list" sequence="30" />
