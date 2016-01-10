@@ -1,0 +1,190 @@
+<openerp>
+    <data>
+
+		<record model="ir.ui.view" id="isp_customer_form">
+			<field name="name">Customer ISP</field>
+			<field name="model">res.partner</field>
+			<field name="arch" type="xml">
+				<form string="Cliente">
+				<sheet>
+					<div>
+                        <h1><field name="name" style="width: 60%" default_focus="1" placeholder="Name"/></h1>
+					</div>
+					<div class="oe_right oe_button_box" name="buttons">
+					    <button class="oe_inline oe_stat_button" type="action" name="416" icon="fa-strikethrough">
+							<field string="Servicios" name="count_services" widget="statinfo"/>
+						</button>
+
+					</div>
+					<group>
+                        <group>
+							<label for="street" string="Address"/>
+							<div>
+							<field name="street" placeholder="Street..." />
+							<div class="address_format">
+								<field name="city" placeholder="City" style="width: 40%" />
+								<field name="state_id" class="oe_no_button" placeholder="State" style="width: 40%" options="{&quot;no_open&quot;: True}" />
+								<field name="zip" placeholder="ZIP" style="width: 20%" />
+							</div>
+							</div>
+						</group>
+                        <group>
+							<label for="phone" string="Telefonos"/>
+							<div>
+								<field name="phone" style="width: 50%"/>
+								<field name="mobile" style="width: 50%"/>
+							</div>
+                            <field name="email" widget="email" />
+                        </group>
+					</group>
+
+					<notebook>
+					    <page name="internal_notes" string="Internal Notes">
+                            <field name="comment" placeholder="Put an internal note..."/>
+                        </page>
+
+						<page name="serivices" string="Servicios">
+							<separator string="Contrato Principal" />
+							<group>
+								<label for="main_contract_id" string="Detalle" />
+								<div>
+									<field name="main_contract_id" domain="[('type','=','contract'),('partner_id','=',id)]" />
+									<field name="main_contract_state" />
+									<field name="main_contract_date_start" />
+								</div>
+							</group>
+							<separator string="Servicios" />
+                            <field name="service_ids"
+								mode="tree"
+								context="{'tree_view_ref': 'view_contract_service_tree2', 'default_account_id': main_contract_id}"
+								select="1"
+								options="{'always_reload': True, 'reload_on_button': True}"/>
+                        </page>
+                    </notebook>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="view_contract_service_tree2" model="ir.ui.view">
+		<field name="name">contract.service.tree</field>
+		<field name="model">contract.service</field>
+		<field name="arch" type="xml">
+            <tree editable="botton" colors="black:require_activation==False; green:state=='active'">
+				<field name="require_activation" invisible="True" />
+				<field name="account_id" invisible="True"/>
+				<field name="state" readonly="True" />
+				<field name="activation_date" attrs="{'readonly': [('state', 'in', ('draft', 'active'))]}" />
+				<field name="category_id" invisible="1" />
+				<field name="product_id" on_change="on_change_product_id(product_id)" domain="[('analytic_line_type', 'in', ('r', 'x', 'o')), ('categ_id', '=', category_id)]" />
+				<field name="analytic_line_type" required="True" />
+				<field name="duration" attrs="{'readonly': [('state', 'in', ('draft', 'active')), ('analytic_line_type', 'in', ('r', 'o'))]}" />
+				<field name="account_id" invisible="True" />
+				<field name="quantity"/>
+				<field name="price_unit" invisible="1"/>
+				<field name="price" readonly="1" sum="Total Price"/>
+				<field name="value" />
+				<button
+					name="%(ideosoft_isp_contract.action_view_contract_service_activate)d"
+					string="Activate"
+					type="action"
+					states="draft"
+					groups="contract_isp.group_isp_agent" />
+				<button
+					name="%(ideosoft_isp_contract.action_view_contract_service_deactivate)d"
+					string="Desactivate"
+					states="active"
+					type="action"
+					groups="contract_isp.group_isp_agent" />
+			</tree>
+		</field>
+		</record>
+
+		<record model="ir.ui.view" id="view_isp_contract_service_form">
+			<field name="name">customer.contract.form</field>
+			<field name="model">contract.service</field>
+			<field name="arch" type="xml">
+				<form string="Cliente">
+				<header>
+					<button states="active" name="action_deactivate" string="Deactivate" type="object"/>
+					<button states="draft,inactive" name="action_deactivate" string="Activate" type="object"/>
+					<button states="active,draft,inactive" name="create_analytic_line" string="create_analytic_line" type="object"/>
+
+				</header>
+				<group>
+					<field name="activation_date"/>
+					<field name="billed_to_date"/>
+					<field name="deactivation_date"/>
+					<field name="duration"/>
+					<field name="product_id"/>
+					<field name="quantity"/>
+					<field name="category_id"/>
+					<field name="name"/>
+					<field name="analytic_line_type"/>
+					<field name="require_activation"/>
+					<field name="account_id"/>
+					<field name="price_unit"/>
+					<field name="price"/>
+					<field name="activation_line_generated"/>
+					<field name="state"/>
+				</group>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="isp_customer_tree">
+			<field name="name">Customer ISP</field>
+			<field name="model">res.partner</field>
+			<field name="arch" type="xml">
+				<tree string="Cliente">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.actions.act_window.view" id="view_res_partner_tree">
+			<field eval="0" name="sequence"/>
+			<field name="view_mode">tree</field>
+			<field name="view_id" ref="isp_customer_tree" />
+		</record>
+
+		<record model="ir.actions.act_window.view" id="view_res_partner_form">
+			<field eval="1" name="sequence"/>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="isp_customer_form" />
+		</record>
+
+		<record model="ir.actions.act_window" id="action_res_partner_list">
+			<field name="name">Clientes ISP</field>
+			<field name="res_model">res.partner</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[('customer','=',True)]</field>
+			<field name="view_ids" eval="[(6, 0, [ref('view_res_partner_tree'), ref('view_res_partner_form')])]" />
+		</record>
+
+		<record model="ir.actions.act_window" id="action_isp_product_product_list">
+			<field name="name">Product ISP</field>
+			<field name="res_model">product.product</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_isp_contract_service_list">
+			<field name="name">Servicios ISP</field>
+			<field name="res_model">contract.service</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<!-- <field name="view_ids" eval="[(6, 0, [ref('view_isp_contract_service_form')])]" /> -->
+		</record>
+
+		<record model="ir.actions.act_window" id="action_isp_aal">
+			<field name="name">AAL</field>
+			<field name="res_model">account.analytic.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+    </data>
+</openerp

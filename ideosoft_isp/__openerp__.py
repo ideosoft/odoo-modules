@@ -14,6 +14,7 @@ Ideosoft Módulo ISP
 ==================================
         """,
     'data': [
+       'views/other.xml',
         'views/menu.xml',
     ],
     'depends': ['ideosoft_isp_contract'],
