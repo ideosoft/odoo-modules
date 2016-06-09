@@ -1,0 +1,2 @@
+"id","active","args","function","name","numbercall","interval_number","model","priority","doall","nextcall","interval_type","user_id/id"
+"__export__.ir_cron_7","True","","update_contract_state","Update contracts","-1","1","hr.contract","2","True","2015-08-19 03:00:00","Días","base.user_root"

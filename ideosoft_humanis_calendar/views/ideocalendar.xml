@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+    
+        <template id="assets_backend" name="ideocalendar assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/css" href="/ideosoft_humanis_calendar/static/src/css/ideocalendar.css" />
+                <script type="text/javascript" src="/ideosoft_humanis_calendar/static/src/js/ideocalendar_vacaciones.js"></script>
+                <script type="text/javascript" src="/ideosoft_humanis_calendar/static/src/js/ideocalendar_convenios.js"></script>
+            </xpath>
+        </template>
+        
+
+    </data>
+</openerp>

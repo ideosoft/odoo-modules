@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+	
+		<!-- CITA -->
+		<record model="ir.ui.view" id="view_hr_employee_cita_tree">
+			<field name="name">hr.employee.cita.tree</field>
+			<field name="model">hr.employee.cita</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de citas">
+					<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+					<field name="fecha" />
+					<field name="hora" />
+					<field name="lugar" />
+					<field name="cc" />
+					<field name="pst" />
+					<field name="descripcion" />	
+					<field name="estado" />		
+				</tree>
+			</field>
+		</record>
+        
+    </data>
+</openerp>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="assets_backend" name="web_widget_ace assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/web_widget_ace/static/src/css/widget.css"/>
+				<script type="text/javascript" src="/web_widget_ace/static/lib/ace/ace.js"></script>
+				<script type="text/javascript" src="/web_widget_ace/static/lib/ace/mode-python.js"></script>
+				<script type="text/javascript" src="/web_widget_ace/static/lib/ace/mode-xml.js"></script>
+				<script type="text/javascript" src="/web_widget_ace/static/lib/ace/mode-pgsql.js"></script>
+				<script type="text/javascript" src="/web_widget_ace/static/lib/ace/jquery-ace.min.js"></script>
+                <script type="text/javascript" src="/web_widget_ace/static/src/js/widget.js"></script>
+            </xpath>
+        </template>
+		
+		<record id="view_view_form" model="ir.ui.view">
+            <field name="model">ir.ui.view</field>
+			<field name="inherit_id" ref="base.view_view_form" />
+            <field name="arch" type="xml">
+				<field name="arch"  position="attributes">
+                    <attribute name="widget">code</attribute>
+					<attribute name="lang">xml</attribute>
+                </field>
+            </field>
+        </record>
+		
+    </data>
+</openerp>

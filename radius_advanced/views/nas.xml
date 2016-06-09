@@ -1,0 +1,40 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="radius_nas_form">
+			<field name="name">radius.nas.form</field>
+			<field name="model">radius.nas</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="nas">
+				<sheet>
+					<group>
+						<field name="nasname" />
+						<field name="shortname" />
+						<field name="type" />
+						<field name="ports" />
+						<field name="secret" />
+						<field name="community" />
+						<field name="description" />
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="radius_nas_tree">
+			<field name="name">radius.nas.tree</field>
+			<field name="model">radius.nas</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="nas">
+					<field name="nasname" />
+					<field name="shortname" />
+					<field name="type" />
+					<field name="ports" />
+					<field name="community" />
+				</tree>
+			</field>
+		</record>
+
+    </data>
+</openerp>

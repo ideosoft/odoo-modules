@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>		
+	<record model="ir.ui.view" id="view_employee_form">
+		<field name="name">hr.employee.form </field>
+		<field name="model">hr.employee</field>
+		<field name="inherit_id" ref="hr.view_employee_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//page[@string='Personal Information']" position="after">
+				<page string="Bank Accounts">
+					<group>
+						<field name="partner_id" invisible="1"/>
+					</group>
+					<field name="bank_ids" context="{'default_employee_id': active_id, 'form_view_ref': 'base.view_partner_bank_form'}" />
+				</page>
+			</xpath>
+		</field>
+	</record>
+  </data>
+</openerp>

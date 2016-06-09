@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+        <report
+            id="report_residuos"
+            model="residuo.entrada"
+            string="Registro entrada residuos"
+            name="ideosoft_residuos_gestion.report_residuo"
+            file="ideosoft_residuos_gestion.report_residuo"
+            report_type="qweb-pdf" 
+            />
+
+        <template id="report_residuo">
+            <t t-call="report.html_container">
+          
+                <t t-foreach="docs" t-as="doc">
+                    <div class="book">
+                    <link rel="stylesheet" type="text/css" href="/ideosoft_residuos_gestion/static/src/css/report.css" />
+                    
+                        <div class="page">
+                            
+                            <table>
+                                <tr>
+                                    <td width="20%" style="padding: 10px;text-align:center">
+                                        <t t-foreach="doc.empresa_id" t-as="company">
+                                            <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 120px; max-width: 150px;"/>
+                                        </t>
+                                    </td>
+                                    <td width="80%" style="padding: 10px;text-align:right">
+                                        <h2 style="text-align:right">CONTROL DE ENTRADA<br/>DE RESIDUOS PELIGROSOS</h2>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+
+                            <h3>Número de registro: <span t-field="doc.number"/></h3>
+                            <br/>
+                            <div style="font-size:13px">
+                                <p>Fecha entrada: <span t-field="doc.date"/></p>
+                                <br/>
+                                <!--
+                                <p>Empresa: <span t-field="doc.empresa_id"/></p>
+                                -->
+                                <p>Obra: <span t-field="doc.obra_id"/></p>
+                                <br/>
+  
+                                <h4>Residuos</h4>
+                                <table class="table table-condensed table-bordered">
+                                    <tr>
+                                        <th class="text-center" width="10%" style="padding:5px 15px;">Cantidad</th>
+                                        <th class="text-center" width="18%" style="padding:5px 15px;">Unidad</th>
+                                        <th class="text-center" width="20%" style="padding:5px 15px;">Cód. LER</th>
+                                        <th width="52%" style="padding:5px 15px">Residuo</th>
+                                    </tr>
+                                    <t t-foreach="doc.entrada_linea_ids" t-as="linea">
+                                        <tr>
+                                            <td width="10%" class="text-center" style="padding:5px 15px;"><span t-field="linea.cantidad"/></td>
+                                            <td width="18%" class="text-center" style="padding:5px 15px;"><span t-field="linea.residuo_id.unidad"/></td>
+                                            <td width="20%" class="text-center" style="padding:5px 15px;"><span t-field="linea.residuo_id.codler.code"/></td>
+                                            <td width="52%" style="padding:5px 15px"><span t-field="linea.residuo_id.descripcion"/></td>
+                                        </tr>
+                                    </t>
+                                </table>
+                                
+                                <br/><br/>
+                                <p>Peso aprox.: <span t-field="doc.peso"/> kg</p>
+                                <br/>
+                                <p>Observaciones</p>
+                                <span t-field="doc.note"/> 
+                            </div>
+                            <br/><br/>
+
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td class="text-center" width="50%" height="120px">
+                                        <span style="font-size:13px">
+                                            ENTREGA<br/>FIRMA
+                                        </span>
+                                    </td>
+                                    <td class="text-center" width="50%" height="120px">
+                                        <span style="font-size:13px">
+                                            RECEPCIÓN ALMACEN<br/>FIRMA
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    
+    </data>
+</openerp>

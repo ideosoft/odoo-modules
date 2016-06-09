@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+
+		<!--- FAMILIAR -->
+		<record model="ir.ui.view" id="view_hr_employee_family_tree">
+			<field name="name">hr.employee.family.tree</field>
+			<field name="model">hr.employee.family</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de familiares">
+					<field name="employee_id" />
+					<field name="relationship" />
+					<field name="name" />
+					<field name="birthday" />
+					<field name="age" />
+					<field name="phone" />
+					<field name="minusvalia" />				
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_family_form">
+            <field name="name">hr.employee.family.form</field>
+            <field name="model">hr.employee.family</field>
+            <field name="arch" type="xml">
+                <form string="Formulario familiar">
+                    <sheet>
+                        <group>
+							<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+							<field name="relationship" />
+							<field name="name" />
+							<field name="birthday" />
+							<field name="age" />
+							<field name="phone" />
+							<field name="minusvalia" />	
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_employee_family_search">
+            <field name="name">hr.employee.family.search</field>
+            <field name="model">hr.employee.family</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="employee_id" />
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_employee_family_list">
+            <field name="name">Familiares</field>
+            <field name="res_model">hr.employee.family</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		
+		<!--- MENU HUMANIS -->
+		<menuitem id="list_familiar_menu" name="Familiares" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_employee_family_list" />
+		
+		<!-- MENU DESARROLLO -->
+		<menuitem id="list_familiar_menu2" name="Familiares" parent="ideosoft_humanis_base.main_familiar_menu2" action="action_hr_employee_family_list" />
+		
+	</data>
+</openerp>

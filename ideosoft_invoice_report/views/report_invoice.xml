@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report 
+            id="ideosoft_invoice"
+            model="account.invoice"
+            string="Invoices"
+            report_type="qweb-pdf"
+            name="account.ideosoft_invoice"
+            file="account.ideosoft_invoice"
+        />
+		
+		<!-- Main template -->
+		<template id="account.ideosoft_invoice">
+			<t t-call="account.ideosoft-style" />
+			<xpath expr="//head" position="replace"></xpath>			
+			
+			<!-- <link rel="stylesheet" type="text/css" href="/ideosoft_invoice_report/static/src/css/report.css" /> -->	
+				
+			<t t-foreach="doc_ids" t-as="doc_id">
+				<t t-raw="translate_doc(doc_id, doc_model, 'partner_id.lang', 'account.ideosoft_invoice_report')"/>
+			</t>
+		</template>
+
+		<!-- Translatable template -->
+
+<template id="account.ideosoft_invoice_report">
+<div class="book">
+
+	<t t-set="page" t-value="1" />	
+	<t t-set="pages" t-value="len(o.invoice_line) / 25 + 1" />
+	
+    <div class="page">
+        <div class="subpage">
+			<div class="highlight title">Soporte y Soluciones</div>
+			<span>Página <t t-esc="page" /> de <t t-esc="pages" /></span>
+			<div class="hwrapper">
+				<table class="table">
+					<tr>
+						<td width="50%">
+							<table class="table">
+								<tr>
+									<td>
+										<img src="http://webmail.ideosoft.es/sites/ideosoft.es/logo.png" />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<strong><span t-field="o.company_id.name"/></strong><br/>
+										<span t-field="o.company_id.vat"/><br/>
+										<span t-field="o.company_id.street"/><br/>
+										<span t-field="o.company_id.zip"/> <span t-field="o.company_id.city"/> <span t-field="o.company_id.state_id"/><br/>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td width="50%">
+							<table class="table">
+								<tr>
+									<td width="25%" class="text-right highlight"><span>Factura</span></td>
+									<td width="25%"><span t-field="o.number"/></td>
+									<td width="25%" class="text-right highlight"><span>Fecha</span></td>
+									<td width="25%"><span t-field="o.date_invoice"/></td>
+								</tr>
+								<tr>
+									<td colspan="4">
+										<strong><span t-field="o.partner_id.name"/></strong><br/>
+										<span t-field="o.partner_id.vat"/><br/>
+										<span t-field="o.partner_id.street"/><br/>
+										<span t-field="o.partner_id.zip"/> <span t-field="o.partner_id.city"/> <span t-field="o.partner_id.state_id"/><br/>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+
+			<div class="bwrapper">
+			<table class="table invoice_lines">
+				<thead>
+					<tr class="highlight">
+						<th><strong>Concepto</strong></th>
+						<th class="text-right"><strong>Cantidad</strong></th>
+						<th class="text-right"><strong>Precio</strong></th>
+						<th class="text-right"><strong>Subtotal</strong></th>
+					</tr>
+				</thead>
+				<tbody>
+					<t t-set="lcount" t-value="1"/>
+					<tr t-foreach="o.invoice_line[0:25]" t-as="l">
+						<td width="55%" class="text-left"><span t-field="l.name"/></td>
+						<td width="15%" class="text-right"><span t-field="l.quantity"/></td>
+						<td width="15%" class="text-right"><span t-field="l.price_unit"/></td>
+						<td width="15%" class="text-right"><span t-field="l.price_subtotal"/></td>
+						<t t-set="lcount" t-value="lcount + 1"/>
+					</tr>
+					<!--
+					<tr t-foreach="[null]*(10 - lcount)" t-as="i">
+						<td width="60%" class="text-left" />
+						<td width="10%" class="text-right" />
+						<td width="15%" class="text-right" />
+						<td width="15%" class="text-right">0</td>
+					</tr>
+					-->
+				</tbody>
+			</table>
+			</div>
+			
+			<t t-if="len(o.invoice_line) &lt; 25">
+			<div class="fwrapper">
+			<table id="invoice_sum" class="table">
+				<tbody>
+					<tr>
+						<td rowspan="6" width="50%"></td>
+						<td width="25%" class="text-left"><span>Base Imponible</span></td>
+						<td width="25%" class="text-right" >
+							<span t-field="o.amount_untaxed"
+								  t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;o.currency_id&quot;}" />
+						</td>
+					</tr>
+					<tr>
+						<td width="25%" class="text-left"><span>Impuestos</span></td>
+						<td width="25%" class="text-right" >
+							<span t-field="o.amount_tax"
+								  t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;o.currency_id&quot;}" />
+						</td>
+					</tr>
+					<tr>
+						<td width="25%" class="text-left highlight"><span>Total</span></td>
+						<td width="25%" class="text-right">
+							<span t-field="o.amount_total"
+								  t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;o.currency_id&quot;}" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"><span>-</span></td>
+					</tr>
+					<tr>
+						<td colspan="2"><span>Forma de Pago: Transferencia Bancaria</span></td>
+					</tr>
+					<tr>
+						<td colspan="2"><span>0081 - 1496 - 41 - 0001124313 (SabadellCAM)</span></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			</t>
+			
+			<div class="highlight footer">www.ideosoft.es</div>
+
+		</div>    
+    </div>
+	<t t-if="len(o.invoice_line) &gt; 25">
+		<div class="page">
+			<div class="subpage">
+			<div class="highlight title">Soporte y Soluciones</div>
+			<t t-set="page" t-value="page + 1"/>
+			<span>Página <t t-esc="page" /> de <t t-esc="pages" /></span>
+			<div class="bwrapper">
+			<table class="table invoice_lines">
+				<thead>
+					<tr class="highlight">
+						<th><strong>Concepto</strong></th>
+						<th class="text-right"><strong>Cantidad</strong></th>
+						<th class="text-right"><strong>Precio</strong></th>
+						<th class="text-right"><strong>Subtotal</strong></th>
+					</tr>
+				</thead>
+				<tbody>
+					<t t-set="lcount" t-value="1"/>
+					<tr t-foreach="o.invoice_line[15:99]" t-as="l">
+						<td width="60%" class="text-left"><span t-field="l.name"/></td>
+						<td width="10%" class="text-right"><span t-field="l.quantity"/></td>
+						<td width="15%" class="text-right"><span t-field="l.price_unit"/></td>
+						<td width="15%" class="text-right"><span t-field="l.price_subtotal"/></td>
+						<t t-set="lcount" t-value="lcount + 1"/>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+
+			<div class="fwrapper">
+			<table id="invoice_sum" class="table">
+				<tbody>
+					<tr>
+						<td rowspan="6" width="50%"></td>
+						<td width="25%" class="text-left"><span>Base Imponible</span></td>
+						<td width="25%" class="text-right" >
+							<span t-field="o.amount_untaxed"
+								  t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;o.currency_id&quot;}" />
+						</td>
+					</tr>
+					<tr>
+						<td width="25%" class="text-left"><span>Impuestos</span></td>
+						<td width="25%" class="text-right" >
+							<span t-field="o.amount_tax"
+								  t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;o.currency_id&quot;}" />
+						</td>
+					</tr>
+					<tr>
+						<td width="25%" class="text-left highlight"><span>Total</span></td>
+						<td width="25%" class="text-right">
+							<span t-field="o.amount_total"
+								  t-field-options="{&quot;widget&quot;: &quot;monetary&quot;,&quot;display_currency&quot;: &quot;o.currency_id&quot;}" />
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2"><span>-</span></td>
+					</tr>
+					<tr>
+						<td colspan="2"><span>Forma de Pago: Transferencia Bancaria</span></td>
+					</tr>
+					<tr>
+						<td colspan="2"><span>0081 - 1496 - 41 - 0001124313 (SabadellCAM)</span></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			
+			</div>
+		</div>
+	</t>
+</div>
+		</template>
+
+		
+		<template id="account.mola">
+			<div class="bwrapper">
+			<table class="table invoice_lines">
+				<thead>
+					<tr class="highlight">
+						<th><strong>Concepto</strong></th>
+						<th class="text-right"><strong>Cantidad</strong></th>
+						<th class="text-right"><strong>Precio</strong></th>
+						<th class="text-right"><strong>Subtotal</strong></th>
+					</tr>
+				</thead>
+				<tbody>
+					<t t-set="lcount" t-value="1"/>
+					<tr t-foreach="o.invoice_line" t-as="l">
+						<td width="60%" class="text-left"><span t-field="l.name"/></td>
+						<td width="10%" class="text-right"><span t-field="l.quantity"/></td>
+						<td width="15%" class="text-right"><span t-field="l.price_unit"/></td>
+						<td width="15%" class="text-right"><span t-field="l.price_subtotal"/></td>
+						<t t-set="lcount" t-value="lcount + 1"/>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+		</template>
+		
+	</data>
+</openerp>

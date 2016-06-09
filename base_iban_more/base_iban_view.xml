@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="view_partner_bank_form">
+			<field name="name">res.partner.bank.form</field>
+			<field name="model">res.partner.bank</field>
+			<field name="inherit_id" ref="base.view_partner_bank_form"/>
+			<field name="arch" type="xml">
+				<field name="acc_number" position="before">
+					<field name="bank_country_id" />
+
+					
+				</field>
+			</field>
+		</record>
+		
+<record model="ir.ui.view" id="view_res_bank_form">
+<field name="name">res.bank.form</field>
+<field name="model">res.bank</field>
+<field name="arch" type="xml">
+	<tree string="Banks" colors="grey:(active==False)">
+		<field name="name"/>
+		<field name="country"/>
+		<field name="active"/>
+	</tree>
+</field>
+</record>
+
+		
+		
+    </data>
+</openerp>

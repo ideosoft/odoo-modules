@@ -1,0 +1,71 @@
+<openerp>
+	<data>
+	
+		<!-- DDI -->
+		<record id="action_ddi_list" model="ir.actions.act_window">
+			<field name="name">DDI</field>
+			<field name="res_model">pbx.ddi</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<!-- Extension -->
+		<record id="action_extension_list" model="ir.actions.act_window">
+			<field name="name">Extension</field>
+			<field name="res_model">pbx.extension</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<!-- Callroute-->
+		<record id="action_callroute_list" model="ir.actions.act_window">
+			<field name="name">Call Routes</field>
+			<field name="res_model">pbx.callroute</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<!-- Context -->
+		<record id="action_context_list" model="ir.actions.act_window">
+			<field name="name">Extension</field>
+			<field name="res_model">pbx.context</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<!-- STD Extension -->
+		<record id="action_stdextension_list" model="ir.actions.act_window">
+			<field name="name">Extension</field>
+			<field name="res_model">pbx.stdextension</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		
+		<!-- Menu -->
+		<!-- top level menu: no parent -->
+		<menuitem id="menu_pbx_root" name="PBX"/>
+		<!-- A first level in the left side menu is needed before using action= attribute -->
+		<menuitem id="menu_pbx_main" name="Main" parent="menu_pbx_root"/>
+
+		<menuitem id="menu_pbx_ddi"
+			name="DDI"
+			parent="menu_pbx_main"
+			action="action_ddi_list"/>
+			
+		<menuitem id="menu_pbx_context"
+			name="Context"
+			parent="menu_pbx_main"
+			action="action_context_list"/>
+			
+		<menuitem id="menu_pbx_callroute"
+			name="Callrule"
+			parent="menu_pbx_main"
+			action="action_callroute_list"/>
+			
+		<menuitem id="menu_pbx_extension"
+			name="Extension"
+			parent="menu_pbx_main"
+			action="action_extension_list"/>
+			
+		<menuitem id="menu_pbx_stdextension"
+			name="Standard Extension"
+			parent="menu_pbx_main"
+			action="action_stdextension_list"/>
+	</data>
+</openerp>

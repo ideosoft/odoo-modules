@@ -1,0 +1,20 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="radius_usergroup_form">
+			<field name="name">radius.usergroup.form</field>
+			<field name="model">radius.usergroup</field>
+			<field name="priority" eval="15"/>
+			<field name="inherit_id" ref="radius.radius_usergroup_form" />
+			<field name="arch" type="xml">
+				<data>
+					<field name="username" position="before">
+						<field name="check_id" />
+					</field>
+					<field name="groupname" position="before">
+						<field name="group_id" />
+					</field>
+				</data>
+			</field>
+		</record>
+    </data>
+</openerp>

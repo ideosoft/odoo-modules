@@ -1,0 +1,46 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="radius_group_form">
+			<field name="name">radius.group.form</field>
+			<field name="model">radius.group</field>
+			<field name="inherit_id" ref="radius.radius_group_form" />
+			<field name="priority" eval="15"/>
+			<field name="arch" type="xml">
+				<data>
+					<field name="groupname" position="before">
+						<field name="name" />
+					</field>
+					<xpath expr="//group" position="after">
+						<h1>Checks</h1>
+						<field name="groupcheck_ids" context="{'default_group_id': id}">
+							<tree editable="top/bottom">
+								<field name="attribute" />
+								<field name="op" />
+								<field name="value" />
+							</tree>
+						</field>
+						<h1>Replies</h1>
+						<field name="groupreply_ids" context="{'default_group_id': id}"> 
+							<tree editable="top/bottom">
+								<field name="attribute" />
+								<field name="op" />
+								<field name="value" />
+							</tree>
+						</field>
+					</xpath>
+				</data>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="radius_group_tree">
+			<field name="name">radius.group.tree</field>
+			<field name="model">radius.group</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="group">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+    </data>
+</openerp>

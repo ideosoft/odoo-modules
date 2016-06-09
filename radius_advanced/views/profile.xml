@@ -1,0 +1,41 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="radius_profile_form">
+			<field name="name">radius.profile.form</field>
+			<field name="model">radius.profile</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="Profile">
+				<sheet string="Profile">
+					<group>						
+						<field name="name" />
+						<field name="groups"
+							widget="many2many_tags"
+							options="{'no_create': True, 'no_quick_create': True, 'no_create_edit': True}"/>
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="radius_profile_tree">
+			<field name="name">radius.profile.tree</field>
+			<field name="model">radius.profile</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="profile">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_profile_list">
+			<field name="name">profile</field>
+			<field name="res_model">radius.profile</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="menu_radius_management_profile" name="Profile" parent="menu_radius_management" action="action_profile_list" sequence="20" />
+		
+    </data>
+</openerp>

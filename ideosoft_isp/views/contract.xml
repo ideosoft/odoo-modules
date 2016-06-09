@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+   
+    <!--
+    <record id="view_company_contract_isp_form" model="ir.ui.view">
+            <field name="name">contract.isp.res.company.form</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Configuration']" position="after">
+                <page string="ISP Contract Management">
+                <group>
+                    <group>
+                        <field name="parent_account_id" />
+                    </group>
+                    <group>
+                        <field name="cutoff_day" />
+                    </group>
+                </group>
+                </page>
+                </xpath>
+            </field>
+    </record>
+	-->
+	
+
+    <record id="view_contract_isp_form" model="ir.ui.view">
+            <field name="name">contract.isp.form</field>
+            <field name="model">account.analytic.account</field>
+			<field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+            <field name="arch" type="xml">
+			<data>
+			    <xpath expr='//div[@name="project"]' position='inside'>
+                    <field name="use_contract_services" />
+                    <label for="use_contract_services" />
+                </xpath>
+				
+				<field name="parent_id" position="after">
+					<button name="create_analytic_lines" string="Crear Lineas" type="object" />
+				</field>
+				
+				<xpath expr="//page[@name='contract_page']" position="after">
+					<page name="services" string="Services">
+						<field name="contract_service_ids" mode="tree" select="1">
+							<tree editable="botton" colors="green:state=='active'" >
+								<field name="account_id" invisible="1"/>
+								<field name="state" readonly="True" />
+								<field name="activation_date" attrs="{'readonly': [('state', 'in', ('draft', 'active'))]}" />
+								<field name="category_id" invisible="1" />
+								<field name="product_id" attrs="{'readonly': [('state', '=', 'active')]}" />
+								<field name="name" />
+								<field name="price" readonly="1" sum="Total Price" />
+								<field name="analytic_line_type" />
+								<field name="require_activation" invisible="True" />
+								<field name="duration" />
+								<field name="account_id" invisible="True" />
+								<button name="action_activate"    string="Activate" type="object" states="draft,inactive" icon="gtk-yes" />
+								<button name="action_desactivate" string="Desactivate" type="object" states="active" icon="gtk-no" />
+							</tree>
+						</field>
+					</page>
+				</xpath>
+			</data>
+		    </field>
+		</record>
+	
+		<record id="view_contract_service_form" model="ir.ui.view">
+            <field name="name">contract.service.form</field>
+            <field name="model">contract.service</field>
+            <field name="arch" type="xml">
+            <form string="Contract Services">
+                <sheet string="Analytic Account">
+					<group>
+						
+						<field name="name" />
+						<field name="activation_date" />
+						<field name="duration" />
+						<field name="product_id" />
+						<field name="category_id" />
+						<field name="price" />
+
+						<field name="analytic_line_type" />
+						<field name="require_activation" />
+						
+						<field name="account_id" />
+
+
+						<field name="activation_line_generated" />
+						<field name="state" />
+					</group>
+                </sheet>
+            </form>
+            </field>
+	    </record>
+	
+	    <record id="view_contract_service_tree" model="ir.ui.view">
+	            <field name="name">contract.service.tree</field>
+	            <field name="model">contract.service</field>
+	            <field name="arch" type="xml">
+				<tree editable="top" string="Contract Services">
+					<field name="account_id" invisible="1"/>
+					<field name="state" readonly="True" />
+					<field name="activation_date" />
+					<field name="category_id" invisible="1" />
+					<field name="product_id" />
+					<field name="duration" />
+					<field name="account_id" invisible="True" />
+					
+					<button
+					name="action_activate"
+					string="Activate"
+					icon="gtk-yes"
+					states="draft"
+					type="object" />
+					
+					<button
+					name="action_reactivate"
+					string="Reactivar"
+					icon="gtk-apply"
+					states="inactive"
+					type="object" />
+
+					<button
+					name="action_desactivate"
+					string="Desactivate"
+					icon="gtk-no"
+					states="active"
+					type="object" />
+				</tree>
+		    </field>
+		</record>
+	
+		<record id="view_contract_isp_product_form" model="ir.ui.view">
+			<field name="name">contract.isp.product.form</field>
+			<field name="model">product.product</field>
+			<field name="inherit_id" ref="product.product_normal_form_view"/>
+			<field name="arch" type="xml">
+				<field name="active" position="after">
+					<field name="analytic_line_type" />
+					<field name="require_activation" />
+				</field>
+			</field>
+		</record>
+	
+	        <record id="contract_isp_form_suspend" model="ir.ui.view">
+	            <field name="name">contract.isp.form.suspend</field>
+	            <field name="model">account.analytic.account</field>
+	            <field name="inherit_id" ref="hr_timesheet_invoice.account_analytic_account_form_form"/>
+	            <field name="arch" type="xml">
+	                <xpath expr="//header/button[@name='set_pending']" position='attributes'>
+			    <attribute name="string">Suspend</attribute>
+			</xpath>
+		    </field>
+		</record>
+
+
+       <record model="ir.actions.act_window" id="action_contract_service_manage">
+            <field name="name">Services</field>
+            <field name="res_model">contract.service</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+		</record>
+		
+				
+		<!-- MENU HUMANIS -->
+		<menuitem id="ideosoft_isp.contratos" name="Contratos" parent="base.menu_product" action="action_contract_service_manage" />
+		
+    </data>
+</openerp>

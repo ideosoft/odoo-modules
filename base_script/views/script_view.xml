@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="res_script_form_view" model="ir.ui.view">
+            <field name="name">Script - Form</field>
+            <field name="model">res.script</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Script">
+					<header>
+					 <button name="run" type="object" string="Run"/>
+					 <!-- <button name="run" type="object" string="Run" confirm="Are you sure you want to run script?"/> -->
+					</header>
+					<field name="state" invisible="1"/>
+					<h1><field name="name"/></h1>
+					<group>
+						<field name="type"/>
+					</group>
+					<group>
+						<field name="description" invisible="1"/>
+					</group>
+					
+					<notebook>
+					<!-- <sparator string="Code" /> -->
+					<page string="Code">
+						<field name="expect_result" attrs="{'invisible': [('type', '!=', 'sql')]}"/>
+						<field name="code" nolabel="1" widget="code"/>
+					<!-- <sparator string="Console" /> -->
+					</page>
+					<page string="Output">
+						<field name="console" nolabel="1" widget="output-result" attrs="{'readonly': True}" />
+					</page>
+					</notebook>
+                </form>
+            </field>
+        </record>
+
+        <record id="res_script_tree_view" model="ir.ui.view">
+            <field name="name">Script - Tree</field>
+            <field name="model">res.script</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Scripts">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="state" invisible="1"/>
+				    <button name="run" type="object" string="Run" confirm="Are you sure you want to run script?" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="res_script_search_view" model="ir.ui.view">
+            <field name="name">Smile script - Search</field>
+            <field name="model">res.script</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Scripts">
+                    <filter string="Draft" icon="terp-document-new" domain="[('state', '=', 'draft')]" />
+                    <filter string="Validated" icon="terp-camera_test" domain="[('state', '=', 'validated')]" />
+                    <separator orientation="vertical"/>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="type"/>
+                    <newline/>
+                    <field name="description"/>
+                    <field name="code"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="act_res_script" model="ir.actions.act_window">
+            <field name="name">Scripts</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.script</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_res_script" parent="base.menu_automation" action="act_res_script"
+        	 groups="base.group_no_one"/>
+
+
+    </data>
+</openerp>

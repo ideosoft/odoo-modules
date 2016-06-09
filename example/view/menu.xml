@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <menuitem name="Example Menu" id="menu_root" sequence="110"/>
+
+        <menuitem name="General" id="menu_example" parent="menu_root"/>
+
+        <record model="ir.actions.act_window" id="action_example">
+            <field name="name">Example</field>
+            <field name="res_model">example.example</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Examples" id="menu_example_action" parent="menu_example"
+            sequence="1" action="action_example"/>
+
+    </data>
+</openerp>

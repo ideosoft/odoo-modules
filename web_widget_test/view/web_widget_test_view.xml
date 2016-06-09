@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="assets_backend" name="web_widget_test assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/web_widget_test/static/src/css/widget.css"/>
+				<script type="text/javascript" src="/web_widget_test/static/lib/ace/ace.js"></script>
+				<script type="text/javascript" src="/web_widget_test/static/lib/ace/mode-python.js"></script>
+				<script type="text/javascript" src="/web_widget_test/static/lib/ace/mode-xml.js"></script>
+				<script type="text/javascript" src="/web_widget_test/static/lib/ace/mode-pgsql.js"></script>
+				
+				<script type="text/javascript" src="/web_widget_test/static/lib/ace/jquery-ace.min.js"></script>
+				
+                <script type="text/javascript" src="/web_widget_test/static/src/js/widget.js"></script>
+
+            </xpath>
+        </template>
+    </data>
+</openerp>

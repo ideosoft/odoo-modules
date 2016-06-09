@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+
+		<!-- RECURSO -->
+		<record model="ir.ui.view" id="view_hr_employee_recurso_tree">
+			<field name="name">hr.employee.recurso.tree</field>
+			<field name="model">hr.employee.recurso</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de recursos">
+					<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+					<field name="fecha_entrega" />
+					<field name="tipo_recurso_id" />
+					<field name="descripcion" />
+					<field name="fecha_devol" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_recurso_form">
+            <field name="name">hr.employee.recurso.form</field>
+            <field name="model">hr.employee.recurso</field>
+            <field name="arch" type="xml">
+                <form string="Formulario recurso">
+                    <sheet>
+                        <group>
+							<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+							<field name="fecha_entrega" />
+							<field name="tipo_recurso_id" options="{'no_quick_create':True,'no_create_edit':True}" />
+							<field name="descripcion" />
+							<field name="fecha_devol" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_employee_recurso_search">
+            <field name="name">hr.employee.recurso.search</field>
+            <field name="model">hr.employee.recurso</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="fecha_entrega" />
+					<field name="tipo_recurso_id" />
+					<field name="fecha_devol" />
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_employee_recurso_list">
+            <field name="name">Recursos</field>
+            <field name="res_model">hr.employee.recurso</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		
+		<!-- TIPO RECURSO -->
+		<record model="ir.ui.view" id="view_hr_employee_tiporecurso_tree">
+			<field name="name">hr.employee.tiporecurso.tree</field>
+			<field name="model">hr.employee.tiporecurso</field>
+			<field name="arch" type="xml">
+				<tree string="Tipos de recursos">
+                    <field name="code" />
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_tiporecurso_form">
+            <field name="name">hr.employee.tiporecurso.form</field>
+            <field name="model">hr.employee.tiporecurso</field>
+            <field name="arch" type="xml">
+                <form string="Formulario tipos de recurso">
+                    <sheet>
+                        <group>
+                            <field name="code" style="width:100px"/>
+                            <field name="name" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+		
+		<record model="ir.actions.act_window" id="action_hr_employee_tiporecurso_list">
+            <field name="name">Tipos de recursos</field>
+            <field name="res_model">hr.employee.tiporecurso</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		
+		<!-- MENU HUMANIS -->		
+		<menuitem id="list_recurso_menu" name="Recursos" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_employee_recurso_list" />
+		<menuitem id="list_tiporecurso_menu" name="Tipos de recursos" parent="ideosoft_humanis_base.main_tablasmaestras_menu" action="action_hr_employee_tiporecurso_list" />
+		
+		<!-- MENU DESARROLLO -->
+		<menuitem id="list_recurso_menu2" name="Recursos" parent="ideosoft_humanis_base.main_recurso_menu2" action="action_hr_employee_recurso_list" />
+		<menuitem id="list_tiporecurso_menu2" name="Tipos de recursos" parent="ideosoft_humanis_base.main_recurso_menu2" action="action_hr_employee_tiporecurso_list" />
+		
+	</data>
+</openerp>

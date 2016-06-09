@@ -1,0 +1,42 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="pbx_callroute_form">
+			<field name="name">pbx.callroute.form</field>
+			<field name="model">pbx.callroute</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="callroute">
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="pattern" />
+					</group>
+					<group>
+						<field name="replace_rules" />
+						<field name="prefix_strip" />
+						<field name="prefix_append" />
+						<field name="suffix_strip" />
+						<field name="suffix_append" />
+						<field name="test" />
+						<field name="result" />
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="pbx_callroute_tree">
+			<field name="name">pbx.callroute.tree</field>
+			<field name="model">pbx.callroute</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="callroute">
+					<field name="name" />
+					<field name="pattern" />
+					
+				</tree>
+			</field>
+		</record>
+		
+    </data>
+</openerp>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+		<!-- FESTIVO -->
+		<record model="ir.ui.view" id="view_res_public_holiday_tree">
+			<field name="name">res.public_holiday.tree</field>
+			<field name="model">res.public_holiday</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de Festivos">
+					<field name="name" />
+					<field name="date" />
+					<field name="weekday" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_res_public_holiday_form">
+            <field name="name">res.public_holiday.form</field>
+            <field name="model">res.public_holiday</field>
+            <field name="arch" type="xml">
+                <form string="Formulario festivo">
+                    <sheet>
+						<h1><field name="name" placeholder="Festivo"/></h1>
+						<group>
+							<group>
+								<field name="date" />
+							</group>
+							<group>
+								<field name="weekday" />
+								<field name="year" />
+							</group>
+						</group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+		
+		<record model="ir.ui.view" id="view_public_holiday_calendar">
+            <field name="name">res.public_holiday.calendar</field>
+            <field name="model">res.public_holiday</field>
+            <field name="arch" type="xml">
+                <calendar date_start="date" date_stop="date" color="type" string="Formulario festivo">
+					<field name="name" />
+					<field name="type" />
+                </calendar>
+            </field>
+        </record>
+
+		<record model="ir.actions.act_window" id="action_public_holiday_list">
+            <field name="name">Festivos</field>
+            <field name="res_model">res.public_holiday</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+        </record>
+	</data>
+</openerp>

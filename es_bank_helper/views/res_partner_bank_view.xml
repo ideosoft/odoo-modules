@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+  <data>
+	<record id="res_partner_bank_convert_to_iban_action" model="ir.actions.server">
+            <field name="name">Convert to IBAN</field>
+            <field name="type">ir.actions.server</field>
+            <field name="model_id" ref="base.model_res_partner_bank" />
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="state">code</field>
+            <field name="code">self.bank_to_iban(cr, uid, context.get('active_ids', []))</field>
+        </record>
+		
+		
+	<record model="ir.values" id="res_partner_bank_convert_to_iban">
+		<field name="name">Convert to IBAN</field>
+		<field name="model">res.partner.bank</field>
+		<field name="key" >action</field>
+		<field name="key2">client_action_multi</field>
+		<field name="value" eval="'ir.actions.server,%d'%res_partner_bank_convert_to_iban_action" />
+	</record>
+		
+	<record model="ir.ui.view" id="view_partner_bank_form">
+		<field name="name">view.partner.bank.form</field>
+		<field name="model">res.partner.bank</field>
+		<field name="inherit_id" ref="base.view_partner_bank_form"/>
+		<field name="arch" type="xml">
+		  <xpath expr="/form/*" position="before">
+			<header>
+			  <button states="bank" name="bank_to_iban" string="Convertir a IBAN" type="object"/>
+			</header>
+		  </xpath>
+		<!--
+			<field name="state" position="before">
+				<field name="country_id"/>
+			</field>
+		-->
+		</field>
+	</record>
+  </data>
+</openerp>

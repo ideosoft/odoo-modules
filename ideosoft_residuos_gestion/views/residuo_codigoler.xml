@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- CODIGO LER -->
+        <record model="ir.ui.view" id="view_residuo_codigoler_tree">
+            <field name="name">residuo.codigoler.tree</field>
+            <field name="model">residuo.codigoler</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Codigo LER" colors="red:dangerous==True">
+                    <field name="code" />
+                    <field name="description" />
+                    <field name="dangerous" />
+                    <!--<field name="group" />
+                    <field name="subgroup" />
+                    <field name="active" />-->
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_residuo_codigoler_form">
+            <field name="name">residuo.codigoler.form</field>
+            <field name="model">residuo.codigoler</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Codigo LER">
+                    <sheet>
+                        <separator string="Codigo LER" />
+                        <group>
+                            <field name="code" />
+                            <field name="description" />
+                            <field name="dangerous" />
+                            <field name="group" />
+                            <field name="subgroup" />
+                            <field name="active" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_residuo_codigoler_search">
+            <field name="name">residuo.codigoler.search</field>
+            <field name="model">residuo.codigoler</field>
+            <field name="arch" type="xml">
+                <search string="Ler">
+                    <field name="code" string="Codigo" />
+                    <field name="description" string="Descripcion" />
+                    <filter name="inactive" string="Inactivos" domain="[('active','=','False')]" />
+                    <separator />
+                    <filter name="group_residuo_codigoler_group" string="Grupo" icon="terp-partner" context="{'group_by':'group'}" />
+                    <filter name="group_residuo_codigoler_subgroup" string="Subgrupo" icon="terp-partner" context="{'group_by':'subgroup'}" />
+                </search>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="open_view_residuo_codigoler_tree">
+            <field name="name">Residuo LER</field>
+            <field name="res_model">residuo.codigoler</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('subgroup','!=','')]</field>
+        </record>
+        
+        <menuitem name="LER" parent="submenu_residuo_administracion" id="menu_open_view_residuo_codigoler_tree" sequence="16" action="open_view_residuo_codigoler_tree" />
+
+        <record model="ir.actions.act_window" id="open_view_residuo_codigoler2_tree">
+            <field name="name">Residuo LER 2</field>
+            <field name="res_model">residuo.codigoler</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('subgroup','=','')]</field>
+        </record>
+        
+        <menuitem name="LER 2" parent="submenu_residuo_administracion" id="menu_open_view_residuo_codigoler2_tree" sequence="17" action="open_view_residuo_codigoler2_tree" />
+
+
+    </data>
+</openerp>

@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+    
+        <template id="assets_backend" name="residuos assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/ideosoft_residuos_gestion/static/src/css/residuos.css"/>
+                <script type="text/javascript" src="/ideosoft_residuos_gestion/static/src/js/residuos.js"></script>
+            </xpath>
+        </template>
+    
+    
+        <!-- menu -->
+		<menuitem id="menu_residuo" name="Residuos" />
+        
+		<menuitem id="submenu_residuo_gestion" name="Gestión de Residuos" parent="menu_residuo" sequence="10" 
+        groups="" />        
+        <menuitem id="submenu_residuo_administracion" name="Administración de Residuos" parent="menu_residuo" sequence="20"  />
+        
+   	</data>
+</openerp>

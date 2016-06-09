@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+    
+        <!-- TIPO UNIDAD -->
+        <record model="ir.ui.view" id="view_residuo_tipounidad_tree">
+            <field name="name">residuo.tipounidad.tree</field>
+            <field name="model">residuo.tipounidad</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Tipo de Unidad">
+                    <field name="descripcion" />
+                    <field name="simbolo" />
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_residuo_tipounidad_form">
+            <field name="name">residuo.tipounidad.form</field>
+            <field name="model">residuo.tipounidad</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Formulario tipo de Unidad">
+                    <sheet>
+                        <separator string="Tipo de Unidad" />
+                        <group>
+                            <field name="descripcion" style="width: 400px"/>
+                            <field name="simbolo" style="width: 80px"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="open_view_residuo_tipounidad_tree">
+            <field name="name">Tipo de Unidad</field>
+            <field name="res_model">residuo.tipounidad</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem name="Tipos de Unidad" parent="submenu_residuo_administracion" id="menu_open_view_residuo_tipounidad_tree" sequence="14" action="open_view_residuo_tipounidad_tree" />
+        
+        
+    </data>
+</openerp>

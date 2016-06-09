@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+	
+		
+<template id="account.ideosoft-style">
+<style>
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+@font-face {
+  font-family: 'Ubuntu Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(http://fonts.gstatic.com/s/ubuntumono/v6/ViZhet7Ak-LRXZMXzuAfkYbN6UDyHWBl620a-IRfuBk.woff) format('woff');
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font: 12pt 'Helvetica';
+}
+
+strong {
+	font-weight: bold;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.page {
+	padding: 1cm;
+}
+
+.subpage {
+    height: 276mm;
+    /* outline: 1px #FFEAEA solid; */
+}
+
+
+.highlight {
+	background-color: #009bdb;
+	color: #ffffff;
+	text-align: center;
+	font-weight: bold;
+}
+
+.footer {
+	font-size: 18px;
+	line-height: 8mm;
+}
+
+.title {
+	font-size: 18px;
+	line-height: 8mm;
+}
+
+.break {
+	height: 5mm;
+	line-height: 5mm;
+	word-break: break-all;
+}
+
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center;}
+
+
+.table {
+    width: 100%;
+    max-width: 100%;
+	line-height: 150%;
+}
+
+table {
+    background-color: transparent;
+}
+table {
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+table td {
+	/* outline: 1px dotted blue; */
+	vertical-align: top;
+	outline: 1px dotted green;
+	padding: 0 1mm;
+}
+table th {
+	/* outline: 1px dotted blue; */
+	outline: 1px dotted red;
+	padding: 0 1mm;
+}
+
+.hwrapper {
+	margin-top: 7mm;
+	min-height: 45mm;
+	height: 45mm;
+	/* background: #cff; */
+}
+
+.bwrapper {
+	margin-top: 7mm;
+	min-height: 120mm;
+	height: 120mm;
+	/* background: #cff; */
+}
+
+.fwrapper {
+	margin-top: 7mm;
+	min-height: 50mm;
+	height: 5cm;
+	/* background: #cff; */
+}
+
+.invoice_lines
+	thead tr {
+	border: 2px solid #ddd;
+}
+
+.footer {
+	margin-top: 7mm;
+}
+
+.invoice_lines
+tbody td {
+	border-left: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+	border-top: 0 !important;
+	border-bottom: 0 !important;
+}
+
+.invoice_lines
+tbody td {
+	border: 0 !important;
+}
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    .page {
+        margin: 0;
+		outline: 0;
+        border: initial;
+        border-radius: initial;
+        width: initial;
+        min-height: initial;
+        box-shadow: initial;
+        background: initial;
+        page-break-after: always;
+    }
+}
+
+@media screen {
+	.page {
+		width: 21cm;
+		min-height: 29.7cm;
+		padding: 1cm;
+		margin: 0 auto;
+		background: white;
+		border: 1px #D3D3D3 solid;
+	}
+}
+
+@media screen and (min-width: 21cm) {
+	body {
+		background-color: #FAFAFA;
+	}
+	.page {
+		margin: 1cm auto;
+		border: 1px #D3D3D3 solid;
+		border-radius: 5px;
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	}
+}
+
+</style>
+</template>
+
+    </data>
+</openerp>

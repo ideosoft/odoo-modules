@@ -1,0 +1,6 @@
+import residuo_entrada
+import residuo_salida
+import residuo_obra
+import residuo_tiporesiduo
+import residuo_tipounidad
+import residuo_codigoler

@@ -1,0 +1,119 @@
+<openerp>
+    <data>
+        <!-- ATRIBUTE VENDOR -->
+    
+        <record model="ir.ui.view" id="radius_attribute_vendor_form">
+            <field name="name">radius.attribute.vendor.form</field>
+            <field name="model">radius.attribute.vendor</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <form string="Vendors">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="radius_attribute_vendor_tree">
+            <field name="name">radius.attribute.vendor.tree</field>
+            <field name="model">radius.attribute.vendor</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <tree string="attribute.vendor">
+                    <field name="name" />
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_attribute_vendor_list">
+            <field name="name">attribute.vendor</field>
+            <field name="res_model">radius.attribute.vendor</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <!-- ATRIBUTE -->
+        <record model="ir.ui.view" id="radius_attribute_form">
+            <field name="name">radius.attribute.form</field>
+            <field name="model">radius.attribute</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <form string="Attributes">
+                <sheet>
+                    <group>
+                        <field name="attribute" />
+                        <field name="type" />
+                        <field name="op" />
+                        <field name="value" />
+                        <field name="vendor_id" />
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="radius_attribute_tree">
+            <field name="name">radius.attribute.tree</field>
+            <field name="model">radius.attribute</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <tree string="attribute">
+                    <field name="vendor_id" />
+                    <field name="attribute" />
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_attribute_list">
+            <field name="name">attribute</field>
+            <field name="res_model">radius.attribute</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        
+        <!-- ATRIBUTE IMPORT -->
+        
+        <record model="ir.ui.view" id="action_attribute_import_form">
+            <field name="name">radius.attribute.import.form</field>
+            <field name="model">radius.attribute.import</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <form string="Attribute Import">
+                    <header>
+                        <h1>Import</h1>
+                    </header>
+                    <field name="text" />
+                    <footer>
+                        <button name="action_import" string="Import" type="object" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_attribute_import">
+            <field name="name">attribute</field>
+            <field name="src_model">radius.attribute</field>
+            <field name="res_model">radius.attribute.import</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        
+        <act_window id="action_attribute_import_wizard"
+            name="Importar Diccionario"
+            src_model="radius.attribute"
+            res_model="radius.attribute.import"
+            view_mode="form"
+            target="new"
+            key2="client_action_multi"/>
+
+        <menuitem id="menu_radius_attribute" parent="menu_radius_root" name="Attribute" sequence="10" />
+        
+        <menuitem parent="menu_radius_attribute" id="menu_radius_attribute2" name="Attribute"  action="action_attribute_list" sequence="10" />
+        <menuitem parent="menu_radius_attribute" id="menu_radius_attribute_vendor" name="Vendor"  action="action_attribute_vendor_list" sequence="20" />
+        <menuitem parent="menu_radius_attribute" id="menu_radius_attribute_import" name="Dictionary Import" action="action_attribute_import" sequence="30" />
+        
+        
+    </data>
+</openerp>

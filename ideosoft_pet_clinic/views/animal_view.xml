@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<openerp>
+	<data>
+		<menuitem name="Clinica Animalistica" id="menu_pet_root" icon="terp-hr"/>
+		
+		<record model="ir.ui.view" id="view_animal_form">
+			<field name="name">animal.animal.form</field>
+			<field name="model">animal.animal</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Clinica">
+					<sheet>
+							<group>
+                                <field name="code" select="1"/>
+                                <field name="name"/>
+                                <field name="raza"/>
+                                <field name="edad"/>
+                                <field name="tamanyo"/>
+                                <field name="estado"/>
+                                <field name="color"/>
+                                <field name="genero"/>
+                            </group>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+        
+		<record model="ir.ui.view" id="view_animal_tree">
+			<field name="name">animal.animal.tree</field>
+			<field name="model">animal.animal</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Clinica">
+					<field name="code" select="1"/>
+                    <field name="name"/>
+                    <field name="raza"/>
+                    <field name="edad"/>
+                    <field name="tamanyo"/>
+                    <field name="estado"/>
+                    <field name="color"/>
+                    <field name="genero"/>
+				</tree>
+			</field>
+		</record>
+        
+		<record model="ir.actions.act_window" id="open_view_animal_tree">
+            <field name="name">Clinica</field>
+			<field name="res_model">animal.animal</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+            
+		<menuitem name="Clinica" parent="menu_pet_root" id="menu_clinica_md"/>
+		<menuitem name="Clinica" parent="menu_clinica_md" id="menu_open_view_animal_tree" action="open_view_animal_tree"/>
+	</data>
+</openerp>

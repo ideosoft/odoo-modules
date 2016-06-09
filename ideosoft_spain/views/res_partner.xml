@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+    
+    <!-- Añadimos el campo nombre comercial a empresa -->
+    <record model="ir.ui.view" id="view_partner_trade_form">
+        <field name="name">view.partner.form.comercial</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="trade" placeholder="Trade Name" domain="[('is_company', '=', True)]"  attrs="{'invisible': [('is_company','=', False)]}"/>
+            </field>
+        </field>
+    </record>
+        
+    </data>
+</openerp>

@@ -1,0 +1,15 @@
+<openerp>
+    <data>
+		
+		
+		<record model="ir.actions.act_window" id="action_user_list">
+			<field name="name">user</field>
+			<field name="res_model">radius.user</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="menu_radius_management" name="Management" parent="radius.menu_radius_root" action="action_user_list" sequence="10" />
+		
+		<menuitem id="menu_radius_management_user" name="Users" parent="menu_radius_management" action="action_user_list" sequence="10" />
+    </data>
+</openerp>

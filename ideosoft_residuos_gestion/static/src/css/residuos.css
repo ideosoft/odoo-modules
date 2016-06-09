@@ -1,0 +1,29 @@
+.residuo_container {
+    position: fixed;
+    background-color: #f2f2f2;
+    z-index: 500;
+    padding: 20px 50px;
+    border-radius: 5px;
+    -webkit-box-shadow: -1px 8px 13px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    -1px 8px 13px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         -1px 8px 13px 0px rgba(50, 50, 50, 0.75);
+    text-align: center;
+}
+.oe_residuos_empresas {
+    
+}
+.oe_companies {
+    display: inline-block;
+}
+.oe_logo_companies {
+    width: 120px;
+    height: 120px;
+    border: 1px solid #ccc;
+}
+.oe_logo_companies:hover {
+    cursor: pointer;
+}
+/* button */
+.oe_systray #oe_topbar_residuobutton_icon {
+    color: white;
+}

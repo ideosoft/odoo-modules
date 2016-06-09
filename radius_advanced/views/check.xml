@@ -1,0 +1,46 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="radius_check_form">
+			<field name="name">radius.check.form</field>
+			<field name="model">radius.check</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="check">
+				<sheet>
+					<group>
+						<field name="username" />
+						<field name="attribute" />
+						<field name="op" />
+						<field name="value" />
+						
+						<field name="active" />
+						
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="radius_check_tree">
+			<field name="name">radius.check.tree</field>
+			<field name="model">radius.check</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="check">
+					<field name="username" />
+					<field name="attribute" />
+					<field name="op" />
+					<field name="value" />
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_check_list">
+			<field name="name">check</field>
+			<field name="res_model">radius.check</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="menu_radius_check" name="Individual Check" parent="menu_radius_main" action="action_check_list" sequence="10" />
+    </data>
+</openerp>

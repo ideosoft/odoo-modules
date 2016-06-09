@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+		<record id="view_hr_contract_type_es_form" model="ir.ui.view">
+            <field name="name">hr.contract.type.es.form</field>
+            <field name="model">hr.contract.type.es</field>
+            <field name="arch" type="xml">
+                <form string="Contract Type">
+                    <group>
+						<field name="code"/>
+						<field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+         <record id="view_hr_contract_type_es_tree" model="ir.ui.view">
+            <field name="name">hr.contract.type.es.tree</field>
+            <field name="model">hr.contract.type.es</field>
+            <field name="arch" type="xml">
+                <tree string="Contract Type ES">
+                    <field name="code"/>
+					<field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+		<record id="view_hr_contract_type_es_search" model="ir.ui.view">
+            <field name="name">hr.contract.type.es.search</field>
+            <field name="model">hr.contract.type.es</field>
+            <field name="arch" type="xml">
+				<search string="Ideas">
+					<field name="name" />
+				</search>
+            </field>
+        </record>
+
+        <record id="action_hr_contract_type_es" model="ir.actions.act_window">
+            <field name="name">Tipos de contratos de la S. S.</field>
+            <field name="res_model">hr.contract.type.es</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+			<field name="search_view_id" ref="view_hr_contract_type_es_search" />
+        </record>
+
+        <menuitem action="action_hr_contract_type_es" id="hr_menu_contract_type_es" parent="hr_contract.next_id_56" sequence="7" groups="base.group_no_one"/>
+
+    </data>
+</openerp>

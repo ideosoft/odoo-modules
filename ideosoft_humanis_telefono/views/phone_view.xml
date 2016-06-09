@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+    
+        <!-- PHONE -->
+        <record model="ir.ui.view" id="view_hr_employee_phone_tree">
+            <field name="name">hr.employee.phone.tree</field>
+            <field name="model">hr.employee.phone</field>
+            <field name="arch" type="xml">
+                <tree string="Listado de teléfonos">
+                    <field name="number" />
+                    <field name="activ_date" />
+                    <field name="leave_date" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_employee_phone_form">
+            <field name="name">hr.employee.phone.form</field>
+            <field name="model">hr.employee.phone</field>
+            <field name="arch" type="xml">
+                <form string="Formulario teléfonos">
+                    <sheet>
+                        <group>
+                            <field name="number" style="width:200px" />
+                            <field name="pin" style="width:120px" />
+                            <field name="puk" style="width:120px" />
+                            <field name="activ_date" style="width:120px" />
+                            <field name="leave_date" style="width:120px" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_employee_phone_search">
+            <field name="name">hr.employee.phone.search</field>
+            <field name="model">hr.employee.phone</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="number" />
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_employee_phone_list">
+            <field name="name">Teléfonos</field>
+            <field name="res_model">hr.employee.phone</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        
+        <!-- MENU -->
+        <menuitem id="list_phone_menu" name="Telefonos" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_employee_phone_list" />
+        
+        <!-- MENU DESARROLLO -->
+        <menuitem id="list_phone_menu2" name="Telefonos" parent="ideosoft_humanis_base.main_telefono_menu2" action="action_hr_employee_phone_list" />
+        
+    </data>
+</openerp>

@@ -1,0 +1,91 @@
+
+.openerp .oe_leftbar {
+    background-color: #FFFFFF !important;
+}
+
+.openerp .nav-pills > li.active > a, .openerp a.list-group-item.active > a {
+    background-color: #009BDB !important;
+}
+
+.openerp .oe_application a {
+    color: #009BDB !important;
+}
+
+.openerp .oe_secondary_menu_section {
+    color: #009BDB !important;
+}
+
+.openerp .badge {
+    background-color: #009BDB !important;
+}
+
+.openerp .oe_leftbar > div .oe_footer {
+    display: none;
+}
+
+.openerp a.button:link, .openerp a.button:visited, .openerp button, .openerp .oe_button, .openerp input[type="submit"] {
+    display: inline-block;
+    color: #4C4C4C;
+    background-color: #FFFFFF;
+    background-image: none;
+    border-radius: 4px;
+    box-shadow: none;
+    text-shadow: none;
+    outline: medium none;
+}
+
+.openerp a.button:focus, .openerp button:focus, .openerp .oe_button:focus, .openerp input[type='submit']:focus {
+  background-position: 0;
+  background-color: #dddddd;
+  background-image: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+
+.openerp button.oe_highlight {
+	background-color: #009BDB !important;
+	background-image: none;
+}
+
+.oe_view_manager_header {
+	background-color: #FFFFFF !important;
+	background-image: none !important;
+}
+
+
+.oe_form_sheetbg {
+	padding: 0 !important;
+	background-image: none;
+	background: #fff#
+}
+
+.openerp .oe_form_sheet_width {
+  min-width: initial;
+  max-width: initial;
+  margin: 0 auto;
+}
+
+.oe_main_menu_navbar {
+	background-color: #009BDB !important;
+	background-image: none;
+}
+
+.navbar-inverse {
+  background-color: #009BDB !important;
+  color: #fff;
+  border: none;
+}
+
+.navbar-inverse .navbar-text {
+  color: #fff;
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar-inverse .navbar-nav > li.active > a {
+  color: #009BDB;
+  background-color: #FFFFFF !important;
+}

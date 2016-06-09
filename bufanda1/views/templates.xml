@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+		
+        <record id="action_bufanda1_list" model="ir.actions.act_window">
+            <field name="name">bufanda1</field>
+            <field name="res_model">bufanda1.bufanda1</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		<menuitem id="menu_bufanda1_root" name="bufanda1" sequence="10" />
+		<menuitem id="menu_bufanda1_main" name="bufanda1" parent="menu_bufanda1_root" sequence="10" />
+		<menuitem id="menu_bufanda1_model" name="bufanda1" parent="menu_bufanda1_main" action="action_bufanda1_list" sequence="10" />
+		
+    </data>
+</openerp>

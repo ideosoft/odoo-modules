@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>	
+		
+        <record id="action_provision_device_list" model="ir.actions.act_window">
+            <field name="name">Device</field>
+            <field name="res_model">pbx.provision.device</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+        <record id="action_provision_model_list" model="ir.actions.act_window">
+            <field name="name">Modelo</field>
+            <field name="res_model">pbx.provision.device.model</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+        <record id="action_provision_manufacturer_list" model="ir.actions.act_window">
+            <field name="name">Manufacturer</field>
+            <field name="res_model">pbx.provision.device.manufacturer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		<menuitem id="menu_pbx_provision" name="Provision" parent="menu_pbx_root"/>
+		
+		<menuitem id="menu_pbx_provision_device"
+			sequence="10"
+			name="Devices"
+			parent="menu_pbx_provision"
+			action="action_provision_device_list" />
+			
+		<menuitem id="menu_pbx_provision_model"
+			sequence="20"
+			name="Models"
+			parent="menu_pbx_provision"
+			action="action_provision_model_list" />
+			
+		<menuitem id="menu_pbx_provision_manufacturer"
+			sequence="30"
+			name="Manufactures"
+			parent="menu_pbx_provision"
+			action="action_provision_manufacturer_list"/>
+
+    </data>
+</openerp>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_cdr_config_settings" model="ir.ui.view">
+            <field name="name">CDR Settings</field>
+            <field name="model">cdr.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="Configure CDR" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                    </header>
+					
+					<field name="company_id" invisible="1" />
+					<separator string="CDR Settings"/>
+					<group>
+						<label for="id" string="FTP Import settings"/>
+						<div>
+							
+							<div name='hostname_div'>
+								<label for="hostname"/>
+								<field name="hostname" />
+							</div>
+							<div name='username_div'>
+								<label for="username"/>
+								<field name="username" />
+							</div>
+							<div name='password_div'>
+								<label for="password"/>
+								<field name="password" password="True" />
+							</div>
+							<div name='check_div'>
+								<label for="check"/>
+								<field name="check" />
+								<button name="test_ftp_connection" type="object" string="Test Connection" icon="gtk-network"/>
+							</div>
+						</div>
+					</group>
+                </form>
+            </field>
+        </record>
+		
+        <record id="action_cdr_config" model="ir.actions.act_window">
+            <field name="name">Configure CDR</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cdr.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="menu_account_config" name="CDR" parent="base.menu_config"
+            sequence="14" action="action_cdr_config"/>
+
+    </data>
+</openerp>

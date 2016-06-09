@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+
+		<!-- SOLICITUD -->
+		<record model="ir.ui.view" id="view_hr_employee_solicitud_tree">
+			<field name="name">hr.employee.solicitud.tree</field>
+			<field name="model">hr.employee.solicitud</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de solicitudes">
+					<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+					<field name="codigo" />
+					<field name="tipo_solicitud_id" />
+					<field name="descripcion" />
+					<field name="fecha" />
+					<field name="estado" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_solicitud_form">
+            <field name="name">hr.employee.solicitud.form</field>
+            <field name="model">hr.employee.solicitud</field>
+            <field name="arch" type="xml">
+                <form string="Formulario solicitud">
+                    <header>
+                        <button name="solicitud_print" string="Imprimir" type="object" />
+                    </header>
+                    <sheet>
+                        <group>
+							<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+							<field name="codigo" style="width:150px"/>
+							<field name="tipo_solicitud_id" options="{'no_quick_create':True,'no_create_edit':True}" />
+							<field name="descripcion" />
+							<field name="fecha" />
+							<field name="estado" style="width:150px"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_employee_solicitud_search">
+            <field name="name">hr.employee.solicitud.search</field>
+            <field name="model">hr.employee.solicitud</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="codigo" />
+					<field name="tipo_solicitud_id" />
+					<field name="fecha" />
+					<field name="estado" />
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_employee_solicitud_list">
+            <field name="name">Solicitudes</field>
+            <field name="res_model">hr.employee.solicitud</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		
+		<!-- TIPO SOLICITUD -->
+		<record model="ir.ui.view" id="view_hr_employee_tiposolicitud_tree">
+			<field name="name">hr.employee.tiposolicitud.tree</field>
+			<field name="model">hr.employee.tiposolicitud</field>
+			<field name="arch" type="xml">
+				<tree string="Tipos de solicitud">
+                    <field name="code" />
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_tiposolicitud_form">
+            <field name="name">hr.employee.tiposolicitud.form</field>
+            <field name="model">hr.employee.tiposolicitud</field>
+            <field name="arch" type="xml">
+                <form string="Formulario solicitud">
+                    <sheet>
+                        <group>
+                            <field name="code" style="width:100px" />
+                            <field name="name" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+		
+		<record model="ir.actions.act_window" id="action_hr_employee_tiposolicitud_list">
+            <field name="name">Tipos de solicitud</field>
+            <field name="res_model">hr.employee.tiposolicitud</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+  
+		<!--- MENU HUMANIS -->
+		<menuitem id="list_solicitud_menu" name="Solicitudes" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_employee_solicitud_list" />
+		<menuitem id="list_tiposolicitud_menu" name="Tipos de solicitud" parent="ideosoft_humanis_base.main_tablasmaestras_menu" action="action_hr_employee_tiposolicitud_list" />
+		
+		<!-- MENU DESARROLLO -->
+		<menuitem id="list_solicitud_menu2" name="Solicitudes" parent="ideosoft_humanis_base.main_solicitud_menu2" action="action_hr_employee_solicitud_list" />
+		<menuitem id="list_tiposolicitud_menu2" name="Tipos de solicitud" parent="ideosoft_humanis_base.main_solicitud_menu2" action="action_hr_employee_tiposolicitud_list" />
+		
+	</data>
+</openerp>

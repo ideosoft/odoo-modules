@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+
+		<!-- PUESTO -->
+		<record model="ir.ui.view" id="view_hr_employee_puesto_tree">
+			<field name="name">hr.employee.puesto.tree</field>
+			<field name="model">hr.employee.puesto</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de puestos">
+					<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+					<field name="puesto" />
+					<field name="categoria_puesto_id" />
+					<field name="fecha_alta" />
+					<field name="fecha_baja" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_puesto_form">
+            <field name="name">hr.employee.puesto.form</field>
+            <field name="model">hr.employee.puesto</field>
+            <field name="arch" type="xml">
+                <form string="Formulario puesto">
+                    <sheet>
+                        <group>
+							<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+							<field name="puesto" />
+							<field name="categoria_puesto_id" options="{'no_quick_create':True,'no_create_edit':True}" />
+							<field name="fecha_alta" />
+							<field name="fecha_baja" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_employee_puesto_search">
+            <field name="name">hr.employee.puesto.search</field>
+            <field name="model">hr.employee.puesto</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="puesto" />
+					<field name="categoria_puesto_id" />
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_employee_puesto_list">
+            <field name="name">Puestos</field>
+            <field name="res_model">hr.employee.puesto</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		
+		<!-- CATEGORIA PUESTO -->
+		<record model="ir.ui.view" id="view_hr_employee_categoriapuesto_tree">
+			<field name="name">hr.employee.categoriapuesto.tree</field>
+			<field name="model">hr.employee.categoriapuesto</field>
+			<field name="arch" type="xml">
+				<tree string="Categorías (puesto)" >
+                    <field name="code" />
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_categoriapuesto_form">
+            <field name="name">hr.employee.categoriapuesto.form</field>
+            <field name="model">hr.employee.categoriapuesto</field>
+            <field name="arch" type="xml">
+                <form string="Formulario categorías">
+                    <sheet>
+                        <group>
+                            <field name="code" style="width:100px" />
+                            <field name="name" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+		
+		<record model="ir.actions.act_window" id="action_hr_employee_categoriapuesto_list">
+            <field name="name">Categorías</field>
+            <field name="res_model">hr.employee.categoriapuesto</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		
+		<!-- MENU HUMANIS -->
+		<menuitem id="list_puesto_menu" name="Puestos" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_employee_puesto_list" />
+		<menuitem id="list_categoriapuesto_menu" name="Categorías (puesto)" parent="ideosoft_humanis_base.main_tablasmaestras_menu" action="action_hr_employee_categoriapuesto_list" />
+		
+		<!-- MENU DESARROLLO -->
+		<menuitem id="list_puesto_menu2" name="Puestos" parent="ideosoft_humanis_base.main_puesto_menu2" action="action_hr_employee_puesto_list" />
+		<menuitem id="list_categoriapuesto_menu2" name="Categorías (puesto)" parent="ideosoft_humanis_base.main_puesto_menu2" action="action_hr_employee_categoriapuesto_list" />
+		
+	</data>
+</openerp>

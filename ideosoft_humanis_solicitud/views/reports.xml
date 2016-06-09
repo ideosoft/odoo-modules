@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+        <report
+            id="report_humanis_solicitud"
+            model="hr.employee.solicitud"
+            string="Solicitud"
+            name="ideosoft_humanis_solicitud.report_solicitud"
+            file="ideosoft_humanis_solicitud.report_solicitud"
+            report_type="qweb-pdf" 
+            />
+            
+            
+        <template id="report_solicitud">
+            <style type="text/css">
+            
+                html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+                @font-face {
+                  font-family: 'Ubuntu Mono';
+                  font-style: normal;
+                  font-weight: 400;
+                  src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(http://fonts.gstatic.com/s/ubuntumono/v6/ViZhet7Ak-LRXZMXzuAfkYbN6UDyHWBl620a-IRfuBk.woff) format('woff');
+                }
+
+                body {
+                    margin: 0;
+                    padding: 0;
+                    font: 12pt 'Helvetica';
+                }
+
+                strong {
+                    font-weight: bold;
+                }
+
+                * {
+                    box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                }
+
+                .page {
+                    padding: 1cm;
+                }
+
+                .highlight {
+                    background-color: #009bdb;
+                    color: #ffffff;
+                    text-align: center;
+                    font-weight: bold;
+                }
+
+                .footer {
+                    font-size: 18px;
+                    line-height: 8mm;
+                }
+
+                .title {
+                    font-size: 18px;
+                    line-height: 8mm;
+                }
+
+                .break {
+                    height: 5mm;
+                    line-height: 5mm;
+                    word-break: break-all;
+                }
+
+                .text-left { text-align: left; }
+                .text-right { text-align: right; }
+                .text-center { text-align: center;}
+
+
+                .table {
+                    width: 100%;
+                    max-width: 100%;
+                    line-height: 150%;
+                }
+
+                table {
+                    background-color: transparent;
+                }
+                table {
+                    border-spacing: 0px;
+                    border-collapse: collapse;
+                }
+
+                .footer {
+                    margin-top: 7mm;
+                }
+
+            
+            </style>
+        
+            <t t-call="report.html_container">
+          
+                <t t-foreach="docs" t-as="doc">
+                    <div class="book">
+                    
+                        <div class="header" style="padding: 12px; border-bottom: 1px solid #ccc">
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="width: 75%; vertical-align: bottom"> <span style="font-size: 24px; font-weight: bold">Impreso de Solicitud</span> </td>
+                                    <td style="width: 25%">
+                                        <img style="height:100px;width=200px" src="/ideosoft_humanis_solicitud/static/src/images/logo-dipsa.png" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                            
+                        <div class="page">
+                        
+                            
+
+                            <div t-field="doc.tipo_solicitud_id" ></div>
+                            <div t-field="doc.employee_id" ></div>
+                            <div t-field="doc.codigo" ></div>
+                            <div t-field="doc.descripcion" ></div>
+                            <div t-field="doc.fecha" ></div>
+                            <div t-field="doc.estado" ></div>
+
+                            
+                            
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    
+    </data>
+</openerp>

@@ -1,0 +1,47 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="radius_groupcheck_form">
+			<field name="name">radius.groupcheck.form</field>
+			<field name="model">radius.groupcheck</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="groupcheck">
+				<sheet>
+					<group>
+						<field name="group_id" />
+						<field name="attribute_id" />
+											
+						<field name="groupname" />
+						<field name="attribute" />
+						<field name="op" />
+						<field name="value" />
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="radius_groupcheck_tree">
+			<field name="name">radius.groupcheck.tree</field>
+			<field name="model">radius.groupcheck</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="groupcheck">
+					<field name="group_id" invisible="context.get('default_group_id',False)" />
+					<field name="groupname" invisible="1"/>
+					<field name="attribute" />
+					<field name="op" />
+					<field name="value" />
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_groupcheck_list">
+			<field name="name">groupcheck</field>
+			<field name="res_model">radius.groupcheck</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="menu_radius_groupcheck" name="Group Check" parent="menu_radius_main" action="action_groupcheck_list" sequence="40" />
+    </data>
+</openerp>

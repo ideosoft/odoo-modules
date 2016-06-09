@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+        <report
+            id="report_humanis_vacaciones"
+            model="hr.employee.vacationswizard"
+            string="Vacaciones"
+            name="ideosoft_humanis_vacaciones.report_vacaciones"
+            file="ideosoft_humanis_vacaciones.report_vacaciones"
+            report_type="qweb-pdf" 
+            />
+            
+            
+        <template id="report_vacaciones">
+            <style type="text/css">
+            
+                html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+                @font-face {
+                    font-family: 'Ubuntu Mono';
+                    font-style: normal;
+                    font-weight: 400;
+                    src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(http://fonts.gstatic.com/s/ubuntumono/v6/ViZhet7Ak-LRXZMXzuAfkYbN6UDyHWBl620a-IRfuBk.woff) format('woff');
+                }
+
+                body {
+                    margin: 20px !important;
+                    padding: 0;
+                    font: 12pt 'Helvetica';
+                }
+
+                strong {
+                    font-weight: bold;
+                }
+
+                * {
+                    box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                }
+
+                .page {
+                    padding: 1cm;
+                }
+
+                .highlight {
+                    background-color: #009bdb;
+                    color: #ffffff;
+                    text-align: center;
+                    font-weight: bold;
+                }
+
+                .footer {
+                    font-size: 18px;
+                    line-height: 8mm;
+                }
+
+                .title {
+                    font-size: 18px;
+                    line-height: 8mm;
+                }
+
+                .break {
+                    height: 5mm;
+                    line-height: 5mm;
+                    word-break: break-all;
+                }
+
+                .text-left { text-align: left; }
+                .text-right { text-align: right; }
+                .text-center { text-align: center;}
+                
+                .table {
+                    width: 100%;
+                    max-width: 100%;
+                    line-height: 150%;
+                }
+                table {
+                    background-color: transparent;
+                }
+                table {
+                    border-spacing: 0px;
+                    border-collapse: collapse;
+                }
+
+                .footer {
+                    margin-top: 7mm;
+                }               
+                .square {
+                    display: inline-block;
+                    border: 1px solid #000;
+                    height: 18px;
+                    width: 18px;
+                    margin-right: 5px;
+                    vertical-align: top;
+                }
+                .rectangle {
+                    display: inline-block;
+                    border: 1px solid #000;
+                    height: 18px;
+                    width: 80px;
+                    margin-right: 5px;
+                    vertical-align: top;
+                }
+                .inline {
+                    display: inline-block;
+                    margin-top:3px;
+                }
+
+            
+            </style>
+        
+            <t t-call="report.html_container">
+          
+                <t t-foreach="docs" t-as="doc">
+                    <div class="book">
+                    
+                        <div class="header" style="margin: 20px; padding: 12px;">
+                            <table class="table table-bordered" style="width: 100%">
+                                <tr>
+                                    <td style="width: 75%;"> 
+                                    
+                                        <table class="table" >
+                                            <tr>
+                                                <td class="text-center" style="border-top: none;">
+                                                    <span style="font-size: 17px; font-weight: bold">SOLICITUD DE PERMISOS</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="border-top: none; font-size: 13px;">
+                                                    TRABAJADOR/A: <span t-field="doc.employee_id" style="font-weight: bold"></span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    
+                                     </td>
+                                    <td style="width: 25%">
+                                        <img style="height:80px;width=200px" src="/ideosoft_humanis_solicitud/static/src/images/logo-dipsa.png" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                            
+                        <div class="page" style="margin: 20px; font-size: 10px;">
+                        
+                            <div style="font-size: 15px; margin-bottom: 12px;">MOTIVOS</div>
+
+                            <table>
+                                <tr style="margin-bottom: 10px; display: block;">
+                                    <td style="vertical-align: top">
+                                        <div class="square"></div> <div class="inline">MATRIMONIO <span>(15 días naturales)</span></div>
+                                    </td>
+                                </tr>
+                                <tr style="margin-bottom: 10px; display: block;">
+                                    <td style="vertical-align: top">
+                                        <div class="square"></div> <div class="inline">NACIMIENTO DE UN HIJO <span>(2 días)</span></div> <span style="display: inline; font-weight:bold">(1)</span>
+                                    </td>
+                                </tr>
+                                <tr style="margin-bottom: 10px; display: block;">
+                                    <td style="vertical-align: top">
+                                        <div class="square"></div> <div class="inline">MUERTE DE UN FAMILIAR <span>Hasta 2º grado de consanguinidad (2 días)</span></div> <span style="display: inline; font-weight:bold">(1)</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="vertical-align: top">
+                                        <div class="square"></div> <div class="inline">ENFERMEDAD GRAVE DE UN FAMILIAR <span>(2 días)</span></div> <span style="display: inline; font-weight:bold">(1)</span>
+                                        <div style="margin: 12px 0 20px 30px; padding: 4px 10px; border: 1px solid #000">
+                                            <p>
+                                                <b>(1)</b> De los días uno al menos será laborable. Podrán ampliarse como máximo a 15 días sin sueldo a partir del tercer día. Cuando por estos motivos sea necesario hacer un desplazamiento el plazo será de 4 días de los cuales 2 al menos serán laborables.
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style="margin-bottom: 10px; display: block;">
+                                    <td style="vertical-align: top">
+                                        <div class="square"></div> <div class="inline">POR TRASLADO DEL DOMICILIO HABITUAL <span>(1 día)</span></div> <span style="display: inline; font-weight:bold">(2)</span>
+                                    </td>
+                                </tr>
+                                <tr style="margin-bottom: 10px; display: block;">
+                                    <td style="vertical-align: top">
+                                        <div class="square"></div> <div class="inline">CUMPLIMIENTO DE UN DEBER INEXCUSABLE DE CARÁCTER PÚBLICO Y PERSONAL </div> <span style="display: inline; font-weight:bold">(2)</span>
+                                    </td>
+                                </tr>
+                                <tr style="margin-bottom: 10px; display: block;">
+                                    <td style="vertical-align: top">
+                                        <div class="square"></div> <div class="inline">CONCURRENCIA A EXÁMENES <span>(Por el tiempo indispensable con preaviso mínimo de 48 horas)</span></div> <span style="display: inline; font-weight:bold">(2)</span>
+                                    </td>
+                                </tr>  
+                                <tr style="margin-bottom: 10px; display: block;">
+                                    <td style="vertical-align: top">
+                                        <div class="square"></div> <div class="inline">ASUNTOS PARTICULARES <span>(Máximo 3 días o 24 horas, previo aviso)</span></div> <span style="display: inline; font-weight:bold">(2)</span>
+                                    </td>
+                                </tr>                                 
+                            </table>
+                            <table style="width:100%; margin-top: 10px;">
+                                <tr class="text-center">
+                                    <td style="width: 50%;">
+                                        <div class="rectangle"></div> <div class="inline">Sin remuneración</div>
+                                    </td>
+                                    <td style="width: 50%;">
+                                        <div class="rectangle"></div> <div class="inline">Cargo a vacaciones</div>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div style="margin: 12px 0 20px 30px; padding: 4px 10px; border: 1px solid #000">
+                                <p>
+                                    <b>(2)</b> Como norma general la fecha de inicio del permiso será coincidente con la fecha en que se produzca el hecho causante. Precisan justificación.
+                                </p>
+                            </div>
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td></td>
+                                    <td class="text-center" style="font-weight:bold">Día / mes</td>
+                                    <td class="text-center" style="font-weight:bold">Día / mes</td>
+                                    <td class="text-center" style="font-weight:bold">Día / mes</td>
+                                    <td class="text-center" style="font-weight:bold">Día / mes</td>
+                                    <td class="text-center" style="font-weight:bold">Día / mes</td>
+                                </tr>
+                                <tr>
+                                    <td style="border:1px solid #000;width: 25%;padding: 3px">FECHAS EN LAS QUE SE DISFRUTARÁ EL PERMISO</td>
+                                    <td style="border:1px solid #000;width: 15%"></td>
+                                    <td style="border:1px solid #000;width: 15%"></td>
+                                    <td style="border:1px solid #000;width: 15%"></td>
+                                    <td style="border:1px solid #000;width: 15%"></td>
+                                    <td style="border:1px solid #000;width: 15%"></td>
+                                
+                                </tr>
+                            </table>
+                                
+                            <table style="width:100%; margin-top:100px">
+                                <tr>
+                                    <td style="width:33%; height: 70px;border: 1px solid #000;">
+                                        <div class="text-center" style="margin-top:5px"><b>El trabajador</b></div>
+                                    </td>
+                                    <td style="width:33%; height: 70px;border: 1px solid #000;">
+                                        <div class="text-center" style="margin-top:5px"><b>El superior directo</b></div>
+                                    </td>
+                                    <td style="width:33%; height: 70px;border: 1px solid #000;">
+                                        <div class="text-center" style="margin-top:5px"><b>Departamento de personal</b></div>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    
+    </data>
+</openerp>

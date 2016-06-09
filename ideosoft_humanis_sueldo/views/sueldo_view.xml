@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+
+		<!-- SUELDO -->
+		<record model="ir.ui.view" id="view_hr_employee_sueldo_tree">
+			<field name="name">hr.employee.sueldo.tree</field>
+			<field name="model">hr.employee.sueldo</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de sueldos">
+					<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+					<field name="fecha" />
+					<field name="ajustado" />
+					<field name="num_pagas" />
+					<field name="sba" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_sueldo_form">
+            <field name="name">hr.employee.sueldo.form</field>
+            <field name="model">hr.employee.sueldo</field>
+            <field name="arch" type="xml">
+                <form string="Formulario sueldo">
+                    <sheet>
+                        <group>
+							<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+							<field name="fecha" />
+							<field name="ajustado" />
+							<field name="num_pagas" />
+							<field name="sba" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+		
+		<record model="ir.ui.view" id="view_hr_employee_sueldo_search">
+            <field name="name">hr.employee.sueldo.search</field>
+            <field name="model">hr.employee.sueldo</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="employee_id" />
+                </search>
+            </field>
+        </record>
+
+
+        <record model="ir.actions.act_window" id="action_hr_employee_sueldo_list">
+            <field name="name">Sueldos</field>
+            <field name="res_model">hr.employee.sueldo</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+		
+		<!--- MENU HUMANIS -->
+		<menuitem id="list_sueldo_menu" name="Sueldos" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_employee_sueldo_list" />
+		
+		<!-- MENU DESARROLLO -->
+		<menuitem id="list_sueldo_menu2" name="Sueldos" parent="ideosoft_humanis_base.main_sueldo_menu2" action="action_hr_employee_sueldo_list" />
+		
+	</data>
+</openerp>

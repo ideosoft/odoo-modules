@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data noupdate="0">
+    
+        <record id="group_residuos_administracion" model="res.groups">
+            <field name="name">Administracion de Residuos</field>
+        </record>
+        
+        <record id="group_residuos_gestion" model="res.groups">
+            <field name="name">Gestion de Residuos</field>
+        </record>
+        
+    </data>
+</openerp>

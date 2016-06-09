@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="residuo.btnChangeCompany">
+        <li t-att-title='_t("Cambiar Empresa")'>
+            <a href="#">
+                  <i id="oe_topbar_residuobutton_icon" class="fa fa-building-o"/>
+            </a>
+        </li>
+    </t>
+   
+    <t t-name="residuo.selectCompany">
+        <div class="residuo_container">
+            <h2>Seleccione empresa</h2>
+            <div class="row oe_residuos_empresas"></div>   
+        </div> 
+    </t>
+    
+    <t t-name="residuo.company">
+        <div class="oe_companies col-md-4">
+            <div class="oe_residuo_logo_company">
+                <img t-att-src="'data:image/png;base64,'+widget.get('logo')" class="oe_logo_companies"/>
+            </div>
+            <!--
+            <div class="oe_residuo_id_company">
+                <t t-raw="widget.get('id')"/>
+            </div>
+            -->
+            <div class="oe_residuo_name_company">
+                <t t-raw="widget.get('name')"/>
+            </div>
+        </div>
+    </t>
+    
+</templates>

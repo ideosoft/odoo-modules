@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+
+        <!-- Menu Parent -->
+        <menuitem id="menu_hr_infraction_root" name="Sanciones" parent="hr.menu_hr_root" groups="base.group_hr_user" sequence="27"/>
+        
+        <!-- Infraction Categories -->
+        <record id="hr_infraction_category_tree" model="ir.ui.view">
+            <field name="name">hr.infraction.category.tree</field>
+            <field name="model">hr.infraction.category</field>
+            <field name="arch" type="xml">
+                <tree string="Categorias de Infraccion">
+                    <field name="code" />
+                    <field name="name" string="Nombre"/>
+                </tree>
+            </field>
+        </record>
+        
+        <record id="hr_infraction_category_form" model="ir.ui.view">
+            <field name="name">hr.infraction.category.form</field>
+            <field name="model">hr.infraction.category</field>
+            <field name="arch" type="xml">
+                <form string="Categorias de Infraccion">
+                    <sheet>
+                        <group>
+                            <field name="code" style="width:100px" />
+                            <field name="name" string="Nombre"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record id="open_hr_infraction_category" model="ir.actions.act_window">
+            <field name="name">Categorias de Infraccion</field>
+            <field name="res_model">hr.infraction.category</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+        <menuitem action="open_hr_infraction_category"
+            id="menu_hr_infraction_category"
+            parent="hr.menu_hr_configuration"
+            sequence="5"/>
+			
+		<record model="ir.ui.view" id="view_hr_infraction_tree">
+			<field name="name">hr.infraction.tree</field>
+			<field name="model">hr.infraction</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de sanciones">
+					<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+					<field name="date" />
+					<field name="category_id" />
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_infraction_form">
+            <field name="name">hr.infraction.form</field>
+            <field name="model">hr.infraction</field>
+            <field name="arch" type="xml">
+                <form string="Formulario sanción">
+                    <sheet>
+						<header>
+							<button name="signal_confirm" type="workflow" states="draft" string="Confirmar" class="oe_highlight"/>
+							<field name="state" widget="statusbar"/>
+						</header>
+            
+							<group>
+								<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+								<field name="date" />
+								<field name="category_id" />
+							</group>
+							<group>
+								<field name="name" />
+							</group>
+							<group string="Description">
+								<field name="memo" nolabel="1" placeholder="Describe la infracion aqui..."/>
+							</group>
+							<group>
+								<field name="attached" />
+							</group>
+   
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_infraction_search">
+            <field name="name">hr.infraction.search</field>
+            <field name="model">hr.infraction</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="date" />
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_infraction_list">
+            <field name="name">Sanciones</field>
+            <field name="res_model">hr.infraction</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_hr_infraction_action"
+            action="action_hr_infraction_list"
+            parent="menu_hr_infraction_root"
+            sequence="15"/>
+			
+		<!-- MENU HUMANIS -->
+		<menuitem id="list_sancion_menu" name="Sanciones" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_infraction_list" />
+        <menuitem id="list_sancion_category_menu" name="Tipo de sanciones" parent="ideosoft_humanis_base.main_humanis_menu" action="open_hr_infraction_category" />
+        
+
+		<!-- MENU DESARROLLO -->
+		<menuitem id="list_sancion_menu2" name="Sanciones" parent="ideosoft_humanis_base.main_sancion_menu2" action="action_hr_infraction_list" />
+        <menuitem id="list_sancion_category_menu2" name="Tipo de sanciones" parent="ideosoft_humanis_base.main_sancion_menu2" action="open_hr_infraction_category" />
+		
+	</data>
+</openerp>

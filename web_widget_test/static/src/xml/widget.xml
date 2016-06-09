@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+	<t t-name="ListView.row.bit" class="oe_bit" t-esc="value"/>
+	
+	<t t-name="ListView.row.byte" class="oe_byte" t-esc="value"/>
+	
+	<t t-name="ListView.row.time" class="oe_time" t-esc="value"/>
+	
+	<template id="field.code">
+		<t t-name="fiel" class="oe_time" t-esc="value"/>
+	</template>
+	
+</templates>

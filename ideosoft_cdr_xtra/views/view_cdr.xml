@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- CDR -->
+        <record model="ir.ui.view" id="view_ideosoft_cdr_xtra_tree">
+			<field name="name">telephony.cdr.tree</field>
+			<field name="model">telephony.cdr</field>
+			<field name="arch" type="xml">
+				<tree string="Listado" >
+					<field name="calltype" />
+                    <field name="accountcode" />
+                    <field name="source" />
+                    <field name="destination" />
+                    <field name="calldate" />
+                    <field name="duration" widget="time"/>
+                    <field name="rx" widget="bit" />
+                    <field name="tx" widget="bit" />
+                    <field name="description" />
+                    <field name="cost" />
+				</tree>
+			</field>
+		</record>
+        
+        <record model="ir.ui.view" id="view_ideosoft_cdr_xtra_form">
+			<field name="name">telephony.cdr.form</field>
+			<field name="model">telephony.cdr</field>
+			<field name="arch" type="xml">
+				<form string="CDR" >
+                    <sheet>
+                        <group>
+                            <field name="accountcode" />
+                            <field name="source" />							
+                            <field name="calldate" />
+                            <field name="calltype" />
+                            <field name="rate" />
+                            <field name="destination" />
+                            <field name="duration" widget="time_format" attr="{'invisible': [('calltype','!=','VOZ')]}" />
+                            <field name="rx" widget="bit" attr="{'invisible': ! [('calltype','in',['DAT'])}"/>
+                            <field name="tx" widget="bit" attr="{'invisible': ! [('calltype','in',['DAT'])}"/>							
+                            <field name="description" />
+                            <field name="cost" />
+                            <field name="_importdata"/>
+                        </group>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+        
+		
+		<record model="ir.ui.view" id="view_telephony_cdr_graph">
+			<field name="name">telephony.cdr.graph</field>
+			<field name="model">telephony.cdr</field>
+			<field name="arch" type="xml">
+				<graph string="CDR graph" type="bar">
+                    <field name="source"/>
+                    <field name="cost" operator="+"/>
+				</graph>
+			</field>
+		</record>
+		
+        <record model="ir.ui.view" id="view_ideosoft_cdr_xtra_search">
+            <field name="name">telephony.cdr.search</field>
+            <field name="model">telephony.cdr</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="calltype" />
+					<field name="accountcode" />
+					<field name="source" />
+					<field name="rate" />
+					<field name="destination" />
+					<field name="calldate" />
+					<field name="description" />
+					
+					<filter name="source"
+						string="Origen"
+						context="{'group_by':'source'}"/>
+						
+					<filter name="calltype"
+						string="Tipo"
+						context="{'group_by':'calltype'}"/>
+						
+					<filter name="current_month"
+						string="Mes Actual" 
+						domain="[('calldate','&lt;',(context_today()+relativedelta(months=1)).strftime('%%Y-%%m-01')), ('calldate','&gt;=',time.strftime('%%Y-%%m-01'))]"/>
+						
+                </search>
+
+            </field>
+        </record>
+        
+        
+        <!-- TABLE CHECK -->
+        <record model="ir.ui.view" id="view_ideosoft_cdr_xtra_check_tree">
+			<field name="name">telephony.cdr.check.tree</field>
+			<field name="model">telephony.cdr.check</field>
+			<field name="arch" type="xml">
+				<tree string="Listado" >
+					<field name="name" />
+                    <field name="state" />
+					<field name="download" />
+					<button name="x_import" string="Importar" type="object" class="oe_highlight" />
+				</tree>
+			</field>
+		</record>
+        
+        <record model="ir.ui.view" id="view_ideosoft_cdr_xtra_check_form">
+			<field name="name">telephony.cdr.check.form</field>
+			<field name="model">telephony.cdr.check</field>
+			<field name="arch" type="xml">
+				<form string="CDR" >
+                    <header>
+                        <button type="object" name="ftp_list_import" string="Descargar ficheros" />
+                    </header>
+                    <sheet>
+                        <group>		
+                            <field name="name" />
+                            <field name="state" />
+                        </group>
+                    </sheet>
+				</form>
+			</field>
+		</record>
+        
+
+        <!-- ACTIONS -->        
+        <record model="ir.actions.act_window" id="action_ideosoft_cdr_xtra_list">
+            <field name="name">Listado CDR</field>
+            <field name="res_model">telephony.cdr</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        
+         <record model="ir.actions.act_window" id="action_ideosoft_cdr_xtra_check_list">
+            <field name="name">Listado ficheros importados</field>
+            <field name="res_model">telephony.cdr.check</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+        </record>
+        
+		<act_window id="action_my_id"
+			name="Procesar"
+			res_model="telephony.cdr"
+			src_model="telephony.cdr.check"
+			key2="client_action_multi"
+			view_mode="form" target="new" view_type="form" />
+        
+        <!-- MENU -->
+        <menuitem id="root_ideosoft_cdr_menu" name="CDR" />
+        <menuitem id="main_ideosoft_cdr_menu" parent="root_ideosoft_cdr_menu" name="CDR" />
+        <menuitem id="list_ideosoft_cdr_menu" name="CDR" parent="main_ideosoft_cdr_menu" action="action_ideosoft_cdr_xtra_list" />
+        <menuitem id="list_ideosoft_cdr_check_menu" name="Ficheros" parent="main_ideosoft_cdr_menu" action="action_ideosoft_cdr_xtra_check_list" />          
+        
+        
+    </data>
+</openerp>

@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+    
+        <record model="ir.ui.view" id="view_razas_form">
+            <field name="name">razas</field>
+            <field name="model">animal.razas</field>
+            <field name="arch" type="xml"><data>
+                <notebook position="inside">
+                    <page string="Clinica">
+                        <field name="id_raza">
+                            <tree>
+                                <field name="code"/>
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+                <field name="birthday" position="replace">
+                    <field name="birthday" on_change="onchange_birthday(birthday, context)"/>
+                    <field name="age"/>
+                </field></data>
+            </field>
+        </record>
+        
+    </data>
+</openerp>

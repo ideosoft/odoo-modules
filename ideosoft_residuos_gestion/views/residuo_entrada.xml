@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+        <record model="ir.ui.view" id="view_residuo_entrada_tree">
+            <field name="name">residuo.entrada.tree</field>
+            <field name="model">residuo.entrada</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="entrada" colors="blue:state=='draft'">
+                    <field name="number" />
+                    <field name="date" />
+                    <field name="empresa_id" />
+                    <field name="obra_id" />
+                    <field name="state" />
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_residuo_entrada_form">
+            <field name="name">residuo.entrada.form</field>
+            <field name="model">residuo.entrada</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Documento Entrada de Residuos">
+                    <header>
+                        <button name="entrada_print" string="Imprimir" type="object" states='draft,confirmed' class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed" />
+                    </header>
+                    <sheet>
+                        <h1>Registro Entrada Residuos <field name="number" readonly="1" class="oe_inline" /></h1>
+                        <group>
+                            <group>
+                                <field name="date" attrs="{'readonly': [('state','=','confirmed')]}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="obra_id" attrs="{'readonly': [('state','=','confirmed')]}" options="{'no_quick_create':True,'no_create_edit':True}" />
+                        </group>
+                        <separator string="Elementos" />
+                        <field name="entrada_linea_ids" attrs="{'readonly': [('state','=','confirmed')]}">
+                            <tree string="Lineas" create="true" edit="true" editable="bottom" class="custom_entrada">
+                                <field name="cantidad" />
+                                <field name="residuo_id" />
+                            </tree>
+                            <link rel="stylesheet" href="/ideosoft_residuos_gestion/static/src/css/entrada.css" />
+                        </field>
+                        <group>
+                            <field name="peso" />
+                        </group>
+                        <notebook>
+                            <page string="Notas">
+                                <field name="note" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+               
+        <record model="ir.actions.act_window" id="open_view_residuo_entrada_almacen_tree">
+            <field name="name">Registros de Entrada</field>
+            <field name="res_model">residuo.entrada</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('recogido','=',False)]</field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="open_view_residuo_entrada_totales_tree">
+            <field name="name">Registros de Entrada</field>
+            <field name="res_model">residuo.entrada</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        
+        
+        <!-- SECUENCIA REGISTRO ENTRADA -->      
+        <record id="reg_entrada_residuo_sec_type" model="ir.sequence.type">
+            <field name="name">Secuencia registro entrada residuo</field>
+            <field name="code">residuo.salida.seq_reg_entrada</field>
+        </record>
+        
+        <record id="reg_entrada_residuo_sec" model="ir.sequence">
+            <field name="name">Secuencia registro entrada residuo</field>
+            <field name="code">residuo.salida.seq_reg_entrada</field>
+            <field eval="1" name="reg_salida_residuo_number_next"/>
+            <field eval="1" name="reg_salida_residuo_number_increment"/>
+            <field eval="4" name="padding"/>
+            <field name="prefix">DERE-</field>
+            <field name="suffix"></field>
+        </record>
+        
+        
+        
+        <menuitem name="Registros Entrada (almacén)" parent="submenu_residuo_gestion" sequence="11" id="menu_open_view_residuo_entrada_almacen_tree" action="open_view_residuo_entrada_almacen_tree" />
+        <menuitem name="Registro Entrada (totales)" parent="submenu_residuo_gestion" sequence="12" id="menu_open_view_residuo_entrada_totales_tree" action="open_view_residuo_entrada_totales_tree" />
+        
+    </data>
+</openerp>

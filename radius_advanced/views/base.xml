@@ -1,0 +1,9 @@
+<openerp>
+    <data>
+		<!-- top level menu: no parent -->
+		<menuitem id="menu_radius_root" name="Radius"/>
+		
+		<!-- A first level in the left side menu is needed before using action=attribute -->
+		<menuitem id="menu_radius_main" name="Main" parent="menu_radius_root"/>
+    </data>
+</openerp>

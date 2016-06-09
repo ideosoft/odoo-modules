@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+
+		<!-- OBSERVACIONES -->
+		<record model="ir.ui.view" id="view_hr_employee_observacion_tree">
+			<field name="name">hr.employee.observacion.tree</field>
+			<field name="model">hr.employee.observacion</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de observaciones">
+					<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+					<field name="codigo" />
+					<field name="fecha" />
+					<field name="hora" />
+					<field name="descripcion" />	
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_observacion_form">
+            <field name="name">hr.employee.observacion.form</field>
+            <field name="model">hr.employee.observacion</field>
+            <field name="arch" type="xml">
+                <form string="Formulario observación">
+                    <sheet>
+                        <group>
+							<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+							<field name="codigo" />
+							<field name="fecha" />
+							<field name="hora" style="width:100px"/>
+							<field name="descripcion" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_employee_observacion_search">
+            <field name="name">hr.employee.observacion.search</field>
+            <field name="model">hr.employee.observacion</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="employee_id" />
+					<field name="codigo" />
+					<field name="fecha" />
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_employee_observacion_list">
+            <field name="name">Observaciones</field>
+            <field name="res_model">hr.employee.observacion</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		
+		<!-- MENU HUMANIS -->
+		<menuitem id="list_observacion_menu" name="Observaciones" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_employee_observacion_list" />
+		
+		<!-- MENU DESARROLLO -->
+		<menuitem id="list_observacion_menu2" name="Observaciones" parent="ideosoft_humanis_base.main_observacion_menu2" action="action_hr_employee_observacion_list" />
+		
+	</data>
+</openerp>

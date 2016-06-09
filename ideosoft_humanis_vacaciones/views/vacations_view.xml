@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+   
+        <!-- VACACIONES -->
+        <record model="ir.ui.view" id="view_humanis_vacations_tree">
+			<field name="name">hr.employee.vacations.tree</field>
+			<field name="model">hr.employee.vacations</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de vacaciones" default_order="employee_id, contract_id, date asc">
+					<field name="date" />
+                    <field name="type" />
+                    <field name="contract_id" />
+                    <field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+				</tree>
+			</field>
+		</record>
+        
+        
+        <record model="ir.ui.view" id="view_humanis_vacations_form">
+            <field name="name">hr.employee.vacations.form</field>
+            <field name="model">hr.employee.vacations</field>
+            <field name="arch" type="xml">
+                <form string="Formulario añadir vacaciones">
+                    <sheet>
+                        <group>
+                            <field name="date" />
+                            <field name="type" />
+                            <field name="contract_id" />
+                            <field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_humanis_vacations_search">
+            <field name="name">hr.employee.vacations.search</field>
+            <field name="model">hr.employee.vacations</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="date" />
+                    <field name="employee_id" />
+                    <field name="contract_id" />
+                </search>
+            </field>
+        </record>
+              
+        
+        <record model="ir.actions.act_window" id="action_hr_employee_vacations_list">
+            <field name="name">Vacaciones</field>
+            <field name="res_model">hr.employee.vacations</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+       
+       
+        <!-- WIZARD GESTIONAR VACACIONES -->
+		<record model="ir.ui.view" id="wizard_vacation_form">
+            <field name="name">wizard.vacation.form</field>
+            <field name="model">hr.employee.vacationswizard</field>
+            <field name="arch" type="xml">
+                <form string="Establecer vacaciones mediante asistente">
+                
+                    <div class="ideocalendar" id="ideocalendar_vacaciones"></div>
+                    
+                    <div class="btn-prev-next">
+                        <a class="oe_button prev">Año anterior</a>
+                        <a class="oe_button next" style="float:right">Año siguiente</a>
+                    </div>
+
+                    <br/>
+                    <div class="legend type_legend">
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="btn c selected"></div><span>COMPLETO</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="btn m"></div><span>MAÑANA</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3">
+                            <div class="btn t"></div><span>TARDE</span>
+                        </div>
+                        <div class="col-xs-6 col-sm-3 delete_legend">
+                            <div class="btn d"></div><span>ELIMINAR</span>
+                        </div>
+                    </div>
+                    <br/>
+
+                    <div id="string_dates">
+                        <field name="aux_dates" invisible="True"/>
+                    </div>
+                    <div id="contract">
+                        <field name="contract_id" invisible="True"/>
+                    </div>
+                    <div id="employee">
+                        <field name="employee_id" invisible="True"/>
+                    </div>
+                    <div id="previous_days">
+                        <field name="previous_days" invisible="False"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="allow_saturdays"/>
+                            <field name="allow_sundays"/>
+                            <field name="allow_holidays"/>
+                        </group>
+                        
+                        <table class="table table-bordered" >
+                            <tr>
+                                <td id="convenio_days" style="width: 50%;background: #eee;">
+                                    <div style="font-size: 11px;font-weight:bold;text-align:center">DÍAS ANUALES (CONVENIO)</div>
+                                    <div class="text-center" style="font-size:16px"><b><span></span></b></div>
+                                </td>
+                                <td id="personal_days" style="width: 50%;background: #eee;">
+                                    <div style="font-size: 11px;font-weight:bold;text-align:center">DÍAS ASUNTOS PROPIOS</div>
+                                    <div class="text-center" style="font-size:16px"><b><span></span></b></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="annual_days" style="width: 50%;padding: 4px;background: #eee;">
+                                    <div style="font-size: 11px;font-weight:bold;text-align:center">DÍAS TOTALES (ESTE AÑO)</div>
+                                    <div class="text-center" style="font-size:16px"><b><span></span></b></div>
+                                </td>
+                                <td id="previous_year_days" style="width: 50%;padding: 4px;background: #eee;">
+                                    <div style="font-size: 11px;font-weight:bold;text-align:center">DÍAS PENDIENTES (AÑOS ANTERIORES)</div>
+                                    <div class="text-center" style="font-size:16px"><b><span></span></b></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td id="requested_days" style="width: 50%;padding: 4px;background: #eee;">
+                                    <div style="font-size: 11px;font-weight:bold;text-align:center">DÍAS SOLICITADOS</div>
+                                    <div class="text-center" style="font-size:16px"><b><span></span></b></div>
+                                </td>
+                                <td id="hanging_days" style="width: 50%;padding: 4px;background: #eee;">
+                                    <div style="font-size: 11px;font-weight:bold;text-align:center">DÍAS RESTANTES</div>
+                                    <div class="text-center" style="font-size:16px"><b><span></span></b></div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </group>
+					<footer>
+                        <button name="setVacations" type="object" string="Guardar" class="oe_highlight"/>
+                        <button special="cancel" string="Cancelar"/>
+                        <button name="printVacations" type="object" string="Imprimir solicitud" class="oe_highlight" style="float: right" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="launch_vacations_wizard"
+                    name="Establecer vacaciones"
+                    src_model="hr.employee.vacations"
+                    res_model="hr.employee.vacationswizard"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"
+                    />
+                    
+                    
+                    
+        <!-- WIZARD AJUSTE DIAS VACACIONES -->
+        <record model="ir.ui.view" id="wizard_pay_vacations_form">
+            <field name="name">wizard.adjustvacations.form</field>
+            <field name="model">hr.employee.adjustvacationswizard</field>
+            <field name="arch" type="xml">
+                <form string="Ajustar días de vacaciones">
+                
+                    <table id="adjustDaysTable" class="table-bordered" width="350" style="margin-bottom: 20px;">
+                        <tr style="background:#eee">
+                            <td style="width: 33%;text-align:center;font-weight: bold; font-size:13px; padding: 5px 10px">COMPLETO</td>
+                            <td style="width: 33%;text-align:center;font-weight: bold; font-size:13px; padding: 5px 10px">MAÑANA</td>
+                            <td style="width: 33%;text-align:center;font-weight: bold; font-size:13px; padding: 5px 10px">TARDE</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 33%;text-align:center; padding: 5px 10px">
+                                <a id="btnFullAddOne" class="oe_button oe_form_button" style="font-size: 15px; margin: 0 5px">+</a>
+                                <a id="btnFullRemoveOne" class="oe_button oe_form_button" style="font-size: 15px; margin: 0 5px">-</a>
+                            </td>
+                            <td style="width: 33%;text-align:center; padding: 5px 10px">
+                                <a id="btnMorningAddOne" class="oe_button oe_form_button" style="font-size: 15px; margin: 0 5px">+</a>
+                                <a id="btnMorningRemoveOne" class="oe_button oe_form_button" style="font-size: 15px; margin: 0 5px">-</a>
+                            </td>
+                            <td style="width: 33%;text-align:center; padding: 5px 10px">
+                                <a id="btnEveningAddOne" class="oe_button oe_form_button" style="font-size: 15px; margin: 0 5px">+</a>
+                                <a id="btnEveningRemoveOne" class="oe_button oe_form_button" style="font-size: 15px; margin: 0 5px">-</a>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <table width="350">
+                        <tr>
+                            <td style="width:50%">
+                                <div id="adjustDays" class="text-center" style="font-size: 16px;"><b>Número de días</b>
+                                    <field name="num_days" style="width: 100px;font-size:15px;font-weight:bold;" />
+                                </div>
+                            </td>
+                            <td style="width:50%">
+                                <div id="pay_input" class="text-center" style="font-size: 15px"><b>Marcar como pagados</b><br/>
+                                    <field name="to_pay" style="widht:20px;height:20px"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <p style="font-size:12px">
+                        * La cantidad de días seleccionada se sumará a los días pendientes de disfrutar
+                        <br/>
+                        ** En caso de querer restar al total de los días del trabajador el número deberá ser negativo
+                    </p>
+                
+					<footer>
+                        <button name="setAdjustDays" type="object" string="Guardar" class="oe_highlight"/>
+                        <button special="cancel" string="Cancelar"/>
+                    </footer>
+                    
+                </form>
+            </field>
+        </record>
+        
+        <act_window id="launch_adjust_hanging"
+                    name="Ajustar dias vacaciones"
+                    src_model="hr.employee.vacations"
+                    res_model="hr.employee.adjustvacationswizard"
+                    view_mode="form"
+                    target="new"
+                    key2="client_action_multi"
+                    />        
+                    
+                    
+                    
+        <template id="assets_backend" name="vacations assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/ideosoft_humanis_vacaciones/static/src/js/vacations.js"></script>
+                <script type="text/javascript" src="/ideosoft_humanis_vacaciones/static/src/js/vacations_action.js"></script>
+            </xpath>
+        </template>
+        
+        
+        <!-- MENU -->
+        <menuitem id="list_vacaciones_menu2" name="Vacaciones" parent="ideosoft_humanis_base.main_vacaciones_menu2" action="action_hr_employee_vacations_list" />        
+        
+        
+        
+	</data>
+</openerp>

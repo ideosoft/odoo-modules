@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="100" model="hr.contract.type.es">
+            <field name="code">100</field>
+            <field name="name">Indefinido ordinario a tiempo completo</field>
+        </record>
+        <record id="130" model="hr.contract.type.es">
+            <field name="code">130</field>
+            <field name="name">Indefinido de discapacitado a tiempo completo</field>
+        </record>
+        <record id="150" model="hr.contract.type.es">
+            <field name="code">150</field>
+            <field name="name">Indefinido bonificado a tiempo completo</field>
+        </record>
+        <record id="200" model="hr.contract.type.es">
+            <field name="code">200</field>
+            <field name="name">Indefinido ordinario a tiempo parcial</field>
+        </record>
+        <record id="230" model="hr.contract.type.es">
+            <field name="code">230</field>
+            <field name="name">Indefinido de discapacitado a tiempo parcial</field>
+        </record>
+        <record id="250" model="hr.contract.type.es">
+            <field name="code">250</field>
+            <field name="name">Indefinido bonificado a tiempo parcial</field>
+        </record>
+        <record id="300" model="hr.contract.type.es">
+            <field name="code">300</field>
+            <field name="name">Fijo discontinuo</field>
+        </record>
+        <record id="330" model="hr.contract.type.es">
+            <field name="code">330</field>
+            <field name="name">Fijo discontinuo de discapacitado</field>
+        </record>
+        <record id="350" model="hr.contract.type.es">
+            <field name="code">350</field>
+            <field name="name">Fijo discontinuo bonificado</field>
+        </record>
+        <record id="401" model="hr.contract.type.es">
+            <field name="code">401</field>
+            <field name="name">Obra o servicio determinado a tiempo completo</field>
+        </record>
+        <record id="402" model="hr.contract.type.es">
+            <field name="code">402</field>
+            <field name="name">Eventual por circunstancias de la producción a tiempo completo</field>
+        </record>
+        <record id="410" model="hr.contract.type.es">
+            <field name="code">410</field>
+            <field name="name">Interinidad a tiempo completo</field>
+        </record>
+        <record id="420" model="hr.contract.type.es">
+            <field name="code">420</field>
+            <field name="name">Prácticas a tiempo completo</field>
+        </record>
+        <record id="421" model="hr.contract.type.es">
+            <field name="code">421</field>
+            <field name="name">Formación a tiempo completo</field>
+        </record>
+        <record id="430" model="hr.contract.type.es">
+            <field name="code">430</field>
+            <field name="name">Temporal de discapacitado a tiempo completo</field>
+        </record>
+        <record id="441" model="hr.contract.type.es">
+            <field name="code">441</field>
+            <field name="name">Relevo a tiempo completo</field>
+        </record>
+        <record id="450" model="hr.contract.type.es">
+            <field name="code">450</field>
+            <field name="name">Temporal bonificado a tiempo completo</field>
+        </record>
+        <record id="452" model="hr.contract.type.es">
+            <field name="code">452</field>
+            <field name="name">Temporal T. Completo Empresas de Inserción</field>
+        </record>
+        <record id="501" model="hr.contract.type.es">
+            <field name="code">501</field>
+            <field name="name">Obra o servicio determinado a tiempo parcial</field>
+        </record>
+        <record id="502" model="hr.contract.type.es">
+            <field name="code">502</field>
+            <field name="name">Eventual por circunstancias de la producción a tiempo parcial</field>
+        </record>
+        <record id="510" model="hr.contract.type.es">
+            <field name="code">510</field>
+            <field name="name">Interinidad a tiempo parcial</field>
+        </record>
+        <record id="520" model="hr.contract.type.es">
+            <field name="code">520</field>
+            <field name="name">Prácticas a tiempo parcial</field>
+        </record>
+        <record id="530" model="hr.contract.type.es">
+            <field name="code">530</field>
+            <field name="name">Temporal de discapacitado a tiempo parcial</field>
+        </record>
+        <record id="540" model="hr.contract.type.es">
+            <field name="code">540</field>
+            <field name="name">Jubilación parcial</field>
+        </record>
+        <record id="541" model="hr.contract.type.es">
+            <field name="code">541</field>
+            <field name="name">Relevo a tiempo parcial</field>
+        </record>
+        <record id="550" model="hr.contract.type.es">
+            <field name="code">550</field>
+            <field name="name">Temporal bonificado a tiempo parcial</field>
+        </record>
+        <record id="552" model="hr.contract.type.es">
+            <field name="code">552</field>
+            <field name="name">Temporal T. Parcial Empresas de Inserción</field>
+        </record>
+        <record id="970" model="hr.contract.type.es">
+            <field name="code">970</field>
+            <field name="name">Adscripción a Colaboración Social</field>
+        </record>
+        <record id="980" model="hr.contract.type.es">
+            <field name="code">980</field>
+            <field name="name">Jubilación especial a los 64 años</field>
+        </record>
+        <record id="990" model="hr.contract.type.es">
+            <field name="code">990</field>
+            <field name="name">Otros contratos</field>
+        </record>
+    </data>
+</openerp>

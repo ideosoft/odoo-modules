@@ -1,0 +1,40 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="hack_hack_form">
+			<field name="name">hack.hack.form</field>
+			<field name="model">hack.hack</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="Server">
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="text" />
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="hack_hack_tree">
+			<field name="name">hack.hack.tree</field>
+			<field name="model">hack.hack</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="Server">
+					<field name="name" />
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_server_list">
+			<field name="name">Servers</field>
+			<field name="res_model">hack.hack</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="menu_hack_root" name="Hack" sequence="10" />
+		<menuitem id="menu_hack_main" name="Hack" parent="menu_hack_root" action="action_server_list" sequence="10" />
+		<menuitem id="menu_hack_hack" name="Hack" parent="menu_hack_main" action="action_server_list" sequence="10" />
+    </data>
+</openerp>

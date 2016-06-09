@@ -1,0 +1,40 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="radius_user_form">
+			<field name="name">radius.user.form</field>
+			<field name="model">radius.user</field>
+			<field name="priority" eval="16"/>
+			<field name="arch" type="xml">
+				<form string="user">
+				<sheet>
+					<group>
+						<field name="username" />
+						<field name="password" />
+						<field name="groups"
+							widget="many2many_tags"
+							options="{'no_create': True, 'no_quick_create': True, 'no_create_edit': True}"/>
+							
+						<field name="usergroup_ids" />
+						
+						<field name="check_id" invisible="0" />
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="radius_user_tree">
+			<field name="name">radius.user.tree</field>
+			<field name="model">radius.user</field>
+			<field name="priority" eval="16"/>
+			<field name="arch" type="xml">
+				<tree string="user">
+					<field name="username" />
+					<field name="groups" context="{'default_user_id': id}" />
+				</tree>
+			</field>
+		</record>
+
+		
+    </data>
+</openerp>

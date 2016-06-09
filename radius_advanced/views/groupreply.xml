@@ -1,0 +1,17 @@
+<openerp>
+    <data>
+
+		<record model="ir.ui.view" id="radius_groupreply_form">
+			<field name="name">radius.groupreply.form</field>
+			<field name="model">radius.groupreply</field>
+			<field name="inherit_id" ref="radius.radius_groupreply_form" />
+			<field name="priority" eval="15"/>
+			<field name="arch" type="xml">
+				<field name="groupname" position="before">
+					<field name="group_id" />
+				</field>
+			</field>
+		</record>
+
+    </data>
+</openerp>

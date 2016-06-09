@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+	
+		<!-- CITA -->
+		<record model="ir.ui.view" id="view_hr_employee_cita_tree">
+			<field name="name">hr.employee.cita.tree</field>
+			<field name="model">hr.employee.cita</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de citas">
+					<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+					<field name="fecha" />
+					<field name="hora" />
+					<field name="lugar" />
+					<field name="cc" />
+					<field name="pst" />
+					<field name="descripcion" />	
+					<field name="estado" />		
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_cita_form">
+            <field name="name">hr.employee.cita.form</field>
+            <field name="model">hr.employee.cita</field>
+            <field name="arch" type="xml">
+                <form string="Formulario cita">
+                    <sheet>
+                        <group>
+                            <field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+							<field name="fecha" />
+							<field name="hora" style="width: 120px;"/>
+							<field name="lugar" />
+							<field name="cc" />
+							<field name="pst" />
+							<field name="descripcion" />	
+							<field name="estado" />	
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_employee_cita_search">
+            <field name="name">hr.employee.cita.search</field>
+            <field name="model">hr.employee.cita</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="fecha" />
+					<field name="estado" />	
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_employee_cita_list">
+            <field name="name">Citas</field>
+            <field name="res_model">hr.employee.cita</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		
+		<!-- MENU -->
+		<menuitem id="list_cita_menu" name="Citas" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_employee_cita_list" />
+		
+		<!-- MENU DESARROLLO -->
+		<menuitem id="list_cita_menu2" name="Citas" parent="ideosoft_humanis_base.main_cita_menu2" action="action_hr_employee_cita_list" />
+		
+	</data>
+</openerp>

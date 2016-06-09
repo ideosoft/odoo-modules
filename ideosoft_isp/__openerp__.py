@@ -5,19 +5,20 @@
     'author': 'Ideosoft CB',
     'version': '1.0',
     'summary': 'Ideosoft ISP',
-    'category': 'Tools',
+    'category': 'Contract Management',
     'complexity': 'medium',
     'website': 'https://www.ideosoft.es/',
     'description':
         """
-Ideosoft Módulo ISP
+Ideosoft ISP Contract
 ==================================
         """,
     'data': [
-       'views/other.xml',
-        'views/menu.xml',
-    ],
-    'depends': ['ideosoft_isp_contract'],
+        'views/contract.xml'
+	],
+     'depends': [
+        'base', 'account_analytic_analysis'
+     ],
     'installable': True,
     'application': False,
     'auto_install': False,

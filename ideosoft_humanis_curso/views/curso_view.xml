@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+
+		<!-- CURSO -->
+		<record model="ir.ui.view" id="view_hr_employee_curso_tree">
+			<field name="name">hr.employee.curso.tree</field>
+			<field name="model">hr.employee.curso</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de cursos">
+					<field name="codigo" />
+					<field name="descripcion" />
+					<field name="horas" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_curso_form">
+            <field name="name">hr.employee.curso.form</field>
+            <field name="model">hr.employee.curso</field>
+            <field name="arch" type="xml">
+                <form string="Formulario cursos">
+                    <sheet>
+                        <group>						
+							<field name="codigo" />
+							<field name="descripcion" />
+							<field name="horas" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_employee_curso_search">
+            <field name="name">hr.employee.curso.search</field>
+            <field name="model">hr.employee.curso</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="codigo" />
+					<field name="horas" />
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_employee_curso_list">
+            <field name="name">Cursos</field>
+            <field name="res_model">hr.employee.curso</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		
+		<!-- CURSO-EMPLEADO -->
+		<record model="ir.ui.view" id="view_hr_employee_cursoempleado_tree">
+			<field name="name">hr.employee.cursoempleado.tree</field>
+			<field name="model">hr.employee.cursoempleado</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de cursos">
+					<field name="curso_id" />
+					<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+					<field name="fecha" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_cursoempleado_form">
+            <field name="name">hr.employee.cursoempleado.form</field>
+            <field name="model">hr.employee.cursoempleado</field>
+            <field name="arch" type="xml">
+                <form string="Formulario cursos">
+                    <sheet>
+                        <group>
+							<field name="curso_id" options="{'no_quick_create':True,'no_create_edit':True}" />
+							<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+							<field name="fecha" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_employee_cursoempleado_search">
+            <field name="name">hr.employee.cursoempleado.search</field>
+            <field name="model">hr.employee.cursoempleado</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="curso_id" />
+					<field name="employee_id" />
+					<field name="fecha" />
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_employee_cursoempleado_list">
+            <field name="name">Relación cursos empleados</field>
+            <field name="res_model">hr.employee.cursoempleado</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		<!-- MENU HUMANIS -->
+		<menuitem id="list_curso_menu" name="Cursos" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_employee_curso_list" />
+		<menuitem id="list_cursoempleado_menu" name="Relación cursos empleados" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_employee_cursoempleado_list" />
+		
+		<!-- MENU DESARROLLO -->
+		<menuitem id="list_curso_menu2" name="Cursos" parent="ideosoft_humanis_base.main_curso_menu2" action="action_hr_employee_curso_list" />
+		<menuitem id="list_cursoempleado_menu2" name="Relación cursos empleados" parent="ideosoft_humanis_base.main_curso_menu2" action="action_hr_employee_cursoempleado_list" />
+		
+	</data>
+</openerp>

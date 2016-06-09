@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+
+        <record id="invoice_form" model="ir.ui.view">
+            <field name="name">account.invoice.inherit.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <button name="invoice_cancel" position="before">
+                    <button name="cancel_validation_to_modify" type="object" states="open" string="Deshacer validación (modificar)" confirm="¿Seguro?" class="oe_highlight" groups="base.group_user"/>
+                    <button name="cancel_validation_to_erase" type="object" states="open" string="Deshacer validación (borrar)" confirm="¿Seguro?" class="oe_highlight" groups="base.group_user"/>
+                </button>
+				<field name="number" position="replace">
+					<field name="number" readonly="0" class="oe_inline" />
+				</field>
+				
+				<field name="internal_number" position="replace">
+					<field name="internal_number" readonly="0" invisible="0" />
+				</field>
+            </field>
+        </record>
+        
+		<record id="invoice_tree" model="ir.ui.view">
+            <field name="name">account.invoice.inherit.tree</field>
+            <field name="model">account.invoice</field>
+			<field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+				<field name="residual" position="replace" />
+				<field name="amount_untaxed" position="replace">
+					<field name="amount_untaxed" string="Base Imponible" sum="Base Imponible Total"/>
+				</field>
+				<field name="amount_untaxed" position="after" string="Base Imponible">
+					<field name="amount_tax" string="Impuesto (IVA)" sum="IVA Total" />
+				</field>
+            </field>
+        </record>
+		
+    </data>
+</openerp>

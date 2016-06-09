@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="invoice_form" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="arch" type="xml">
+                <form string="Invoice">
+                <header position="inside">
+						<button name="invoice_efactura" string="Generar eFactura" type="object" groups="base.group_user"/>
+				</header>
+				</form>
+			</field>
+		</record>
+	</data>
+</openerp>

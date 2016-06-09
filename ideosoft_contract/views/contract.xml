@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+<record id="view_contract_isp_form" model="ir.ui.view">
+        <field name="name">contract.isp.form</field>
+        <field name="model">account.analytic.account</field>
+    <field name="inherit_id" ref="account_analytic_analysis.account_analytic_account_form_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//div[@name="project"]' position='inside'>
+                <field name="use_contract_services" />
+                <label for="use_contract_services" />
+            </xpath>
+
+    <xpath expr="//separator[@string='Invoicing']" position="before">
+        <separator 
+        name="services"
+        string="Services"
+        attrs="{'invisible': [('use_contract_services', '=', False)]}"/>
+        <field 
+        name="contract_service_ids"
+        mode="tree"
+        select="1"
+        options="{'always_reload': True, 'reload_on_button': True}"
+        attrs="{'invisible': [('use_contract_services', '=', False)]}">
+        <tree editable="botton" colors="green:state=='active'" >
+            <field name="account_id" invisible="1"/>
+            <field name="state" readonly="True" />
+            <field name="activation_date"
+               attrs="{'readonly': [('state', 'in', ('draft', 'active'))]}" />
+            <field name="category_id" invisible="1" />
+            <field name="product_id"
+               on_change="on_change_product_id(product_id)"
+               attrs="{'readonly': [('state', '=', 'active')]}"
+               domain="['&amp;', ('analytic_line_type', 'in', ('r', 'x', 'o')), ('categ_id', '=', category_id)]" />
+            <field name="name" />
+            <field name="qty" on_change="on_change_qty(qty, unit_price)" />
+            <field name="unit_price" invisible="1" />
+            <field name="price" readonly="1" sum="Total Price" />
+            <field name="analytic_line_type" />
+            <field name="require_activation" invisible="True" />
+            <field 
+            name="duration"
+            attrs="{'readonly': [('state', 'in', ('draft', 'active')),
+                                 ('analytic_line_type', 'in', ('r', 'o'))],
+                                    'required': [('analytic_line_type', '=', 'x')]}" />
+            <field name="account_id" invisible="True" />
+        </tree>
+        </field>
+    </xpath>
+    </field>
+</record>
+
+<record id="view_contract_service_form" model="ir.ui.view">
+    <field name="name">contract.service.form</field>
+    <field name="model">contract.service</field>
+    <field name="arch" type="xml">
+        <form string="Contract Services">
+        <sheet string="Analytic Account">
+            <field name="activation_date" />
+            <field name="duration" />
+            <field name="product_id" />
+            <field name="require_activation" />
+            
+            <field name="qty" />
+            <field name="state" />
+        </sheet>
+        </form>
+    </field>
+</record>
+
+
+</data>
+</openerp>

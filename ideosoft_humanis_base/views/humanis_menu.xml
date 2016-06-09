@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>	
+	
+		<!-- MENU PRINCIPAL -->
+		<menuitem id="root_humanis_menu" name="HUMANIS"  sequence="2" />
+		<menuitem id="main_humanis_menu" parent="root_humanis_menu" name="Humanis" />
+		<menuitem id="main_tablasmaestras_menu" parent="root_humanis_menu" name="Tablas Maestras" />
+		
+		
+		<!-- MENU DESARROLLO -->
+		<menuitem id="root_desarrollo_menu" name="DESARROLLO" sequence="1" />
+		
+		<!-- EMPLEADO -->
+		<menuitem id="main_empleado_menu2" parent="root_desarrollo_menu" name="Empleados" sequence="10" />
+		
+		<!-- EMPRESA -->
+		<menuitem id="main_empresa_menu2" parent="root_desarrollo_menu" name="Empresas" sequence="11" />
+		
+		<!-- CITA -->
+		<menuitem id="main_cita_menu2" parent="root_desarrollo_menu" name="Citas" sequence="12" />
+		
+		<!-- CONTRATO -->
+		<menuitem id="main_contrato_menu2" parent="root_desarrollo_menu" name="Contratos" sequence="13" />
+		
+		<!-- CONVENIO -->
+		<menuitem id="main_convenio_menu2" parent="root_desarrollo_menu" name="Convenios" sequence="14" />
+		
+		<!-- CURSO -->
+		<menuitem id="main_curso_menu2" parent="root_desarrollo_menu" name="Cursos" sequence="15" />
+		
+		<!-- EMBARGO -->
+		<menuitem id="main_embargo_menu2" parent="root_desarrollo_menu" name="Embargos" sequence="16" />
+		
+		<!-- EXPERIENCIA -->
+		<menuitem id="main_experiencia_menu2" parent="root_desarrollo_menu" name="Experiencia" sequence="17" />
+		
+		<!-- FAMILIAR -->
+		<menuitem id="main_familiar_menu2" parent="root_desarrollo_menu" name="Familiares" sequence="18" />
+		
+		<!-- OBSERVACION -->
+		<menuitem id="main_observacion_menu2" parent="root_desarrollo_menu" name="Observaciones" sequence="19" />
+				
+		<!-- PUESTO -->
+		<menuitem id="main_puesto_menu2" parent="root_desarrollo_menu" name="Puestos" sequence="20" />
+	
+		<!-- RECURSO -->
+		<menuitem id="main_recurso_menu2" parent="root_desarrollo_menu" name="Recursos" sequence="21" />
+	
+		<!-- SANCION -->
+		<menuitem id="main_sancion_menu2" parent="root_desarrollo_menu" name="Sanciones" sequence="22" />
+		
+		<!-- SINDICATO -->
+		<menuitem id="main_sindicato_menu2" parent="root_desarrollo_menu" name="Sindicatos" sequence="23" />
+		
+		<!-- SOLICITUD -->
+		<menuitem id="main_solicitud_menu2" parent="root_desarrollo_menu" name="Solicitudes" sequence="24" />
+
+		<!-- SUELDO -->
+		<menuitem id="main_sueldo_menu2" parent="root_desarrollo_menu" name="Sueldos" sequence="25" />
+        
+        <!-- TELEFONOS -->
+		<menuitem id="main_telefono_menu2" parent="root_desarrollo_menu" name="Telefonos" sequence="26" />
+        
+        <!-- VACACIONES -->
+		<menuitem id="main_vacaciones_menu2" parent="root_desarrollo_menu" name="Vacaciones" sequence="27" />
+	
+		
+		
+		<record id="action_partner_form2" model="ir.actions.act_window">
+            <field name="name">Customers</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>            
+        </record>
+		<menuitem id="main_partner_menu" name="Partner" parent="root_humanis_menu" />
+		<menuitem id="hr_employee_items" name="Elementos" parent="ideosoft_humanis_base.root_humanis_menu" />
+		<menuitem id="list_partner_menu" name="Partner" parent="hr_employee_items" action="action_partner_form2" />
+		
+	
+	</data>
+</openerp>

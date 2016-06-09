@@ -1,0 +1,21 @@
+.custom_entrada [data-id="cantidad"] {
+    width: 120px;
+}
+.custom_entrada [data-id="residuo"] {
+    width: 130px;
+}
+
+.custom_entrada [data-id="codler"] {
+    width: 120px;
+}
+.custom_entrada th[data-id="descripcion"] {
+    width: 240px !important;
+    border: 1px solid blue !important!
+}
+
+
+/*
+input {
+    background: red !important;
+}
+*/

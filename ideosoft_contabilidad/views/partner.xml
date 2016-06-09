@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- SECUENCIA CUENTA RECEIVABLE -->
+        <record id="account_partner_customer_sec_type" model="ir.sequence.type">
+            <field name="name">Secuencia cuenta clientes</field>
+            <field name="code">account.partner.seq_customer</field>
+        </record>
+ 
+        <record id="account_partner_customer_sec" model="ir.sequence">
+            <field name="name">Secuencia cuenta clientes</field>
+            <field name="code">account.partner.seq_customer</field>
+            <field eval="1" name="account_partner_customer_number_next"/>
+            <field eval="1" name="account_partner_customer_number_increment"/>
+            <field name="prefix"></field>
+            <field name="suffix"></field>
+        </record>
+        
+        
+        <!-- SECUENCIA CUENTA PAYABLE -->
+        <record id="account_partner_supplier_sec_type" model="ir.sequence.type">
+            <field name="name">Secuencia cuenta proovedores</field>
+            <field name="code">account.partner.seq_supplier</field>
+        </record>
+ 
+        <record id="account_partner_supplier_sec" model="ir.sequence">
+            <field name="name">Secuencia cuenta proovedores</field>
+            <field name="code">account.partner.seq_supplier</field>
+            <!-- <field eval="4" name="padding"/> -->
+            <field eval="1" name="account_partner_supplier_number_next"/>
+            <field eval="1" name="account_partner_supplier_number_increment"/>
+            <field name="prefix"></field>
+            <field name="suffix"></field>
+        </record>
+    
+    
+    </data>
+</openerp>

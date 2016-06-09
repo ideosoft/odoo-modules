@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+	<data>
+
+		<!-- EXPERIENCIA LABORAL -->
+		<record model="ir.ui.view" id="view_hr_employee_experience_tree">
+			<field name="name">hr.employee.experience.tree</field>
+			<field name="model">hr.employee.experience</field>
+			<field name="arch" type="xml">
+				<tree string="Listado de experiencia laboral">
+					<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+					<field name="fecha_inicio" />
+					<field name="fecha_fin" />
+					<field name="puesto" />
+					<field name="empresa" />
+				</tree>
+			</field>
+		</record>
+
+        <record model="ir.ui.view" id="view_hr_employee_experience_form">
+            <field name="name">hr.employee.experience.form</field>
+            <field name="model">hr.employee.experience</field>
+            <field name="arch" type="xml">
+                <form string="Formulario experiencia laboral">
+                    <sheet>
+                        <group>
+							<field name="employee_id" invisible="context.get('default_employee_id',False)"/>
+							<field name="fecha_inicio" />
+							<field name="fecha_fin" />
+							<field name="puesto" />
+							<field name="empresa" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_hr_employee_experience_search">
+            <field name="name">hr.employee.experience.search</field>
+            <field name="model">hr.employee.experience</field>
+            <field name="arch" type="xml">
+                <search>
+					<field name="puesto" />
+					<field name="empresa" />
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_hr_employee_experience_list">
+            <field name="name">Experiencia laboral</field>
+            <field name="res_model">hr.employee.experience</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+		
+		<!--- MENU HUMANIS -->
+		<menuitem id="list_experiencia_menu" name="Experiencia laboral" parent="ideosoft_humanis_base.main_humanis_menu" action="action_hr_employee_experience_list" />
+		
+		<!-- MENU DESARROLLO -->
+		<menuitem id="list_experiencia_menu2" name="Experiencia laboral" parent="ideosoft_humanis_base.main_experiencia_menu2" action="action_hr_employee_experience_list" />
+		
+	</data>
+</openerp>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<openerp>
+    <data>
+    
+        <!-- TIPO RESIDUO -->
+        <record model="ir.ui.view" id="view_residuo_tiporesiduo_tree">
+            <field name="name">residuo.tiporesiduo.tree</field>
+            <field name="model">residuo.tiporesiduo</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Tipo de Residuo">
+                    <field name="descripcion" />
+                    <field name="codler" />
+                    <field name="unidad" />
+                    <field name="peso" />
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_residuo_tiporesiduo_form">
+            <field name="name">residuo.tiporesiduo.form</field>
+            <field name="model">residuo.tiporesiduo</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Formulario tipo de residuo">
+                    <sheet>
+                        <separator string="Tipo de residuo" />
+                        <group>
+                            <field name="descripcion" />
+                            <field name="codler" />
+                            <field name="unidad" />
+                            <field name="peso" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_residuo_tiporesiduo_search">
+            <field name="name">residuo.tiporesiduo.search</field>
+            <field name="model">residuo.tiporesiduo</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="descripcion" string="Descripcion" />
+                    <filter name="group_residuo_unidad" string="Unidad" context="{'group_by':'unidad'}" />
+                    <filter name="group_residuo_codigoler" string="Codigo LER" context="{'group_by':'codler'}" />
+                </search>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="open_view_residuo_tiporesiduo_tree">
+            <field name="name">Tipo de Residuo</field>
+            <field name="res_model">residuo.tiporesiduo</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <menuitem name="Tipos de Residuo" parent="submenu_residuo_administracion" id="menu_open_view_residuo_tiporesiduo_tree" sequence="13" action="open_view_residuo_tiporesiduo_tree" />
+        
+       
+    </data>
+</openerp>

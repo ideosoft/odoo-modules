@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+	
+        <record id="telephony_ivrmenu_entry_form" model="ir.ui.view">
+            <field name="name">telephony.ivrmenu.entry.form</field>
+            <field name="model">telephony.ivrmenu.entry</field>
+            <field name="arch" type="xml">
+                <form string="IVR Menu Entry">
+                <sheet>
+                    <group>
+                        <field name="position" />
+                        <field name="action" />
+						<field name="ivrmenu_id" />
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="telephony_ivrmenu_entry_tree" model="ir.ui.view">
+            <field name="name">telephony.ivrmenu.entry.tree</field>
+            <field name="model">telephony.ivrmenu.entry</field>
+            <field name="arch" type="xml">
+                <tree string="IVR Menu Entry">
+					<field name="position" />
+					<field name="action" />
+                </tree>
+            </field>
+        </record>
+		
+        <record id="telephony_ivrmenu_form" model="ir.ui.view">
+            <field name="name">telephony.ivrmenu.form</field>
+            <field name="model">telephony.ivrmenu</field>
+            <field name="arch" type="xml">
+                <form string="IVR Menu">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="entry_ids" context="{'default_ivrmenu_id': id}">
+							<tree string="Entrys" editable="bottom">
+								<field name="position" />
+								<field name="action" />
+								<field name="ivrmenu_id" />
+							</tree>
+						</field>
+                    </group>
+                </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="telephony_ivrmenu_tree" model="ir.ui.view">
+            <field name="name">telephony.ivrmenu.tree</field>
+            <field name="model">telephony.ivrmenu</field>
+            <field name="arch" type="xml">
+                <tree string="IVR Menu">
+					<field name="name" />
+					<field name="entry_ids" />
+                </tree>
+            </field>
+        </record>
+		
+    </data>
+</openerp>

@@ -1,0 +1,44 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="pbx_sipaccount_form">
+			<field name="name">pbx.sipaccount.form</field>
+			<field name="model">pbx.sipaccount</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="sipaccount">
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="password" />
+						<field name="callerid" />
+						<field name="dialplan" />
+						
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="pbx_sipaccount_tree">
+			<field name="name">pbx.sipaccount.tree</field>
+			<field name="model">pbx.sipaccount</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="sipaccount">
+					<field name="name" />
+					<field name="callerid" />
+					<field name="dialplan" />
+					
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_sipaccount_list">
+			<field name="name">sipaccounts</field>
+			<field name="res_model">pbx.sipaccount</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="menu_pbx_sipaccount" name="Cuentas SIP" parent="menu_pbx_main" action="action_sipaccount_list" sequence="20"/>
+    </data>
+</openerp>

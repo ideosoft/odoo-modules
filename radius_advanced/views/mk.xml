@@ -1,0 +1,37 @@
+<openerp>
+    <data>
+		<!-- ATRIBUTE IMPORT -->
+		
+		<record model="ir.ui.view" id="action_radius_import_form">
+			<field name="name">radius.mikrotik.import.form</field>
+			<field name="model">radius.mikrotik.import</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="Mikrotik Import">
+					<group>
+						<field name="host" />
+						<field name="port" />
+						<field name="username" />
+						<field name="password" />
+						<field name="status" />
+					</group>
+					<footer>
+						<button name="action_import" string="Import" type="object" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_radius_import">
+			<field name="name">radius</field>
+			<field name="src_model">radius.mikrotik.import</field>
+			<field name="res_model">radius.mikrotik.import</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+
+		<menuitem parent="menu_radius_attribute" id="menu_radius_mikrotik_import" name="Mikrotik" action="action_radius_import" sequence="30" />
+		
+		
+    </data>
+</openerp>
