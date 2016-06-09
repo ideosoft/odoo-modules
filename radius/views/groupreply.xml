@@ -1,0 +1,36 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="radius_groupreply_form">
+			<field name="name">radius.groupreply.form</field>
+			<field name="model">radius.groupreply</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="groupreply">
+				<sheet>
+					<group>									
+						<field name="groupname" />
+						<field name="attribute" />
+						<field name="op" />
+						<field name="value" />
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="radius_groupreply_tree">
+			<field name="name">radius.groupreply.tree</field>
+			<field name="model">radius.groupreply</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="groupreply">
+					<field name="groupname" invisible="1"/>
+					<field name="attribute" />
+					<field name="op" />
+					<field name="value" />
+				</tree>
+			</field>
+		</record>
+		
+    </data>
+</openerp>

@@ -1,0 +1,34 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="radius_usergroup_form">
+			<field name="name">radius.usergroup.form</field>
+			<field name="model">radius.usergroup</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="usergroup">
+				<sheet>
+					<group>
+						<field name="username" />
+						<field name="groupname" />
+						<field name="priority" />
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="radius_usergroup_tree">
+			<field name="name">radius.usergroup.tree</field>
+			<field name="model">radius.usergroup</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="usergroup">
+					<field name="username" />
+					<field name="groupname" />
+					<field name="priority" />
+				</tree>
+			</field>
+		</record>
+		
+    </data>
+</openerp>

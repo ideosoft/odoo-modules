@@ -1,0 +1,36 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="radius_groupcheck_form">
+			<field name="name">radius.groupcheck.form</field>
+			<field name="model">radius.groupcheck</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="groupcheck">
+				<sheet>
+					<group>										
+						<field name="groupname" />
+						<field name="attribute" />
+						<field name="op" />
+						<field name="value" />
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="radius_groupcheck_tree">
+			<field name="name">radius.groupcheck.tree</field>
+			<field name="model">radius.groupcheck</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="groupcheck">
+					<field name="groupname" />
+					<field name="attribute" />
+					<field name="op" />
+					<field name="value" />
+				</tree>
+			</field>
+		</record>
+
+    </data>
+</openerp>

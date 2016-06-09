@@ -1,0 +1,30 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="radius_group_form">
+			<field name="name">radius.group.form</field>
+			<field name="model">radius.group</field>
+			<field name="priority" eval="16"/>
+			<field name="arch" type="xml">
+				<form string="group">
+				<sheet>
+					<group>
+						<field name="groupname" />
+					</group>
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="radius_group_tree">
+			<field name="name">radius.group.tree</field>
+			<field name="model">radius.group</field>
+			<field name="priority" eval="16"/>
+			<field name="arch" type="xml">
+				<tree string="group">
+					<field name="groupname" />
+				</tree>
+			</field>
+		</record>
+
+    </data>
+</openerp>

@@ -1,0 +1,96 @@
+<openerp>
+    <data>
+		
+		<record model="ir.actions.act_window" id="action_nas_list">
+			<field name="name">nas</field>
+			<field name="res_model">radius.nas</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_check_list">
+			<field name="name">check</field>
+			<field name="res_model">radius.check</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_reply_list">
+			<field name="name">reply</field>
+			<field name="res_model">radius.reply</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_group_list">
+			<field name="name">group</field>
+			<field name="res_model">radius.group</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_groupcheck_list">
+			<field name="name">groupcheck</field>
+			<field name="res_model">radius.groupcheck</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_groupreply_list">
+			<field name="name">groupreply</field>
+			<field name="res_model">radius.groupreply</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_usergroup_list">
+			<field name="name">usergroup</field>
+			<field name="res_model">radius.usergroup</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_acct_list">
+			<field name="name">Active Sessions</field>
+			<field name="res_model">radius.acct</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[['acctstoptime', '=', False]]</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_acct2_list">
+			<field name="name">History</field>
+			<field name="res_model">radius.acct</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[['acctstoptime', 'IS', NULL]]</field>
+		</record>
+
+		<record model="ir.actions.act_window" id="action_ippool_list">
+			<field name="name">IP Pool</field>
+			<field name="res_model">radius.ippool</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+		
+		<!-- top level menu: no parent -->
+		<menuitem id="menu_radius_root" name="Radius"/>
+		
+		<!-- A first level in the left side menu is needed before using action=attribute -->
+		<menuitem id="menu_radius_main" name="Radius" parent="menu_radius_root" sequence="10" />
+		
+		<menuitem id="menu_radius_nas" name="Network Access Server" parent="menu_radius_main" action="action_nas_list" sequence="10" />
+		
+		<menuitem id="menu_radius_check" name="Individual Check" parent="menu_radius_main" action="action_check_list" sequence="20" />
+		
+		<menuitem id="menu_radius_reply" name="Individual Reply" parent="menu_radius_main" action="action_reply_list" sequence="30" />
+		
+		<menuitem id="menu_radius_group" name="Groups" parent="menu_radius_main" action="action_group_list" sequence="40" />
+
+		<menuitem id="menu_radius_groupcheck" name="Group Check" parent="menu_radius_main" action="action_groupcheck_list" sequence="50" />
+
+		<menuitem id="menu_radius_groupreply" name="Group Replies" parent="menu_radius_main" action="action_groupreply_list" sequence="60" />
+		
+		<menuitem id="menu_radius_usergroup" name="User Group" parent="menu_radius_main" action="action_usergroup_list" sequence="70" />
+		
+		<menuitem id="menu_radius_sess" name="Sessions" parent="menu_radius_root" sequence="10" />
+		
+		<menuitem id="menu_radius_acct" name="Active" parent="menu_radius_sess" action="action_acct_list" sequence="80" />
+		
+		<menuitem id="menu_radius_acct2" name="All" parent="menu_radius_sess" action="action_acct2_list" sequence="80" />
+		
+		<menuitem id="menu_radius_ippool" name="IP Pool" parent="menu_radius_sess" action="action_ippool_list" sequence="90" />
+		
+		
+    </data>
+</openerp>
