@@ -1,0 +1,46 @@
+<openerp>
+    <data>
+		<record model="ir.ui.view" id="pbx_server_form">
+			<field name="name">pbx.server.form</field>
+			<field name="model">pbx.server</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<form string="Server">
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="host" />
+						<field name="port" />
+						<field name="login" />
+						<field name="password" />
+						<field name="status" />
+					</group>
+					<button string="Test" type="object" name="check_status" />
+				</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="pbx_server_tree">
+			<field name="name">pbx.server.tree</field>
+			<field name="model">pbx.server</field>
+			<field name="priority" eval="2"/>
+			<field name="arch" type="xml">
+				<tree string="Server">
+					<field name="name" />
+					<field name="host" />
+					<field name="port" />
+					<field name="login" />
+				</tree>
+			</field>
+		</record>
+		
+		<record model="ir.actions.act_window" id="action_server_list">
+			<field name="name">Servers</field>
+			<field name="res_model">pbx.server</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="menu_pbx_server" name="Server" parent="menu_pbx_main" action="action_server_list" sequence="10" />
+    </data>
+</openerp>
