@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>	
+		
+        <record id="action_ivrmenu_list" model="ir.actions.act_window">
+            <field name="name">IVR Menu</field>
+            <field name="res_model">telephony.ivrmenu</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+        <record id="action_ivrmenu_entry_list" model="ir.actions.act_window">
+            <field name="name">IVR Menu Entry</field>
+            <field name="res_model">telephony.ivrmenu.entry</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		
+
+		<menuitem id="menu_pbx_telephony" name="Provision" parent="menu_pbx_root"/>
+		
+		<menuitem id="menu_pbx_telephony_ivrmenu"
+			sequence="10"
+			name="IVR Menu"
+			parent="menu_pbx_telephony"
+			action="action_ivrmenu_list" />
+			
+		<menuitem id="menu_pbx_provision_ivrmenu_entry"
+			sequence="20"
+			name="IVR Menu Entry"
+			parent="menu_pbx_telephony"
+			action="action_ivrmenu_entry_list" />
+
+    </data>
+</openerp>
